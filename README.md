@@ -100,4 +100,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 If you have any questions or feedback, feel free to reach out via email:
 
-sadiiito123@gmail.com
+sadiahmedova02@gmail.com
