@@ -1,0 +1,23 @@
+{% load static %}
+
+<div class="show card dairies filterDiv">
+    <a href="{% url 'details dairy' dairy.pk %}">
+        {% if dairy.photo %}
+            <img class="product-card-image" src="{{ dairy.photo.url }}" alt="post">
+        {% else %}
+            <img class="product-card-image" src="{% static 'images/milk-products.jpg' %}" alt="post">
+        {% endif %}
+    </a>
+    <h1>{{ dairy }}</h1>
+    <p class="price">${{ dairy.price|floatformat:2 }}</p>
+
+    {% if request.user.is_authenticated and request.user.id != dairy.user_id %}
+        <button id="add-to-cart-DairyProduct-{{ dairy.pk }}" onclick="addToCart('DairyProduct',{{ dairy.pk }})"
+                hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"
+                hx-target="#menu-cart-button"
+                hx-swap="outerHTML"
+        >
+            Add to cart
+        </button>
+    {% endif %}
+</div>

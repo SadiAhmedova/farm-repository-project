@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} My cart {% endblock %}
+{% block page_content %}
+    <div class="whole-page">
+        <div class="header-orders">
+            <div class="head-ord"><b>Shopping cart</b></div>
+
+            <div id="cart-length-text" class="count-orders">
+                {{ total_items }} items
+            </div>
+        </div>
+
+        <div class="orders-window">
+
+            {% for item in cart %}
+                {% include 'cart/cart_item.html' %}
+            {% endfor %}
+            <hr>
+        </div>
+
+        {% if total_items != 0 %}
+            <div class="checkout">
+                <div class="total">
+                    <span class="Subtotal">Total: </span>
+
+                    <span
+                            class="total-amount"
+                            hx-get="{% url 'cart total' %}"
+                            hx-trigger="update-menu-cart from:body"
+                            hx-swap="innerHTML">
+                    {% include 'cart/cart_total.html' %}
+                </span>
+                </div>
+                <a href="{% url 'checkout' %}">
+                    <button class="cust-button checkoutbtn">Checkout</button>
+                </a>
+            </div>
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

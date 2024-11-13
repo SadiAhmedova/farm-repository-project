@@ -1,0 +1,166 @@
+{% extends 'main/base.html' %}
+{% block title %} My profile {% endblock %}
+{% load static %}
+{% block page_content %}
+
+    <div class="profile-details-whole-page" style="margin-top: 70px;">
+        <div class="profile-image">
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" alt="Photo">
+
+            {% elif profile.gender == 'Female' %}
+                <img src="{% static 'images/undraw_female_avatar_efig.svg' %}" alt="Female Icon">
+            {% else %}
+                <img src="{% static 'images/undraw_male_avatar_g98d.svg' %}" alt="Male Icon">
+            {% endif %}
+            <h1> {{ profile.get_user_name }}</h1>
+
+        </div>
+        <div class="profile-information">
+            <div id="profile-buttons">
+                {% if request.user.id == object.id %}
+                    <br>
+                    <a class="cust-button prof-button orders-btn"
+                       href="{% url 'my orders' object.id %}">My Orders</a>
+                    <br><br>
+                    <a class="cust-button prof-button" href="{% url 'profile edit' object.pk %}">Edit</a>
+
+                    <a id="deleteProfileBtn" class="cust-button prof-button"
+                       onclick="document.getElementById('modal-delete').style.display='block'">Delete</a>
+                {% endif %}
+            </div>
+            <table>
+                <tr>
+                    <th>
+                        <p> Email</p>
+                    </th>
+                    <th>
+                        <p>{{ profile.email }}</p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p> Birthdate</p>
+                    </th>
+                    <th>
+                        <p>
+                            {% if profile.date_of_birth %}
+                                {{ profile.date_of_birth }}
+                            {% else %}
+                                Not mentioned
+                            {% endif %}
+                        </p>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th>
+                        <p>Gender</p>
+                    </th>
+                    <th>
+                        <p>
+                            {% if profile.gender %}
+                                {{ profile.gender }}
+                            {% else %}
+                                Not mentioned
+                            {% endif %}
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p>
+                            Total Products
+                        </p>
+                    </th>
+                    <th>
+                        <p>{{ products_count }}</p>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        {% if products_count > 0 %}
+            <h1 class="text-center big-text my-products">My Products</h1>
+
+            <div class="profile-products">
+
+                {% for item in all_my_products %}
+
+                    {% if item.model_name == 'VegetableAndFruit' %}
+                        <a href="{% url 'details vegetable' item.product.id %}">
+                    {% elif item.model_name == 'Nut' %}
+                        <a href="{% url 'details nut' item.product.id %}">
+                    {% elif item.model_name == 'DairyProduct' %}
+                        <a href="{% url 'details dairy' item.product.id %}">
+                    {% elif item.model_name == 'AnimalProduct' %}
+                        <a href="{% url 'details animal' item.product.id %}">
+                    {% endif %}
+                <div class="product-card">
+
+
+                    {% if not  item.product.photo %}
+                        {% if item.model_name == 'VegetableAndFruit' %}
+                            <img class="small-card-image" src="{% static 'images/fruit-and-veg.jpg' %}"
+                                 alt="Veggie Photo">
+                        {% elif item.model_name == 'Nut' %}
+                            <img class="small-card-image" src="{% static 'images/nuts-and-dry-fruits.jpg' %}"
+                                 alt="Nut Photo">
+                        {% elif item.model_name == 'DairyProduct' %}
+                            <img class="small-card-image" src="{% static 'images/milk-products.jpg' %}"
+                                 alt="Milk Photo">
+                        {% elif item.model_name == 'AnimalProduct' %}
+                            <img class="small-card-image" src="{% static 'images/meat.jpg' %}" alt="Meat Photo">
+                        {% endif %}
+                    {% else %}
+                        <img class="small-card-image" src="{{ item.product.photo.url }}" alt="Photo">
+                    {% endif %}
+
+                    <h1>{{ item.product }}</h1>
+                    <p class="price">${{ item.product.price|floatformat:2 }}</p>
+
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.id != item.product.user_id %}
+                            <button id="add-to-cart-{{ item.model_name }}-{{ item.product.pk }}"
+                                    onclick="addToCart('{{ item.model_name }}',{{ item.product.id }})"><a
+                                    hx-get="{% url 'add to cart' item_type=item.model_name product_id=item.product.id %}"
+                                    hx-target="#menu-cart-button"
+                                    hx-swap="outerHTML">
+
+                                Add to cart
+                            </a>
+                            </button>
+                        {% endif %}
+                    {% endif %}
+                </div>
+                </a>
+
+                </a>
+
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+
+    <div id="modal-delete" class="modal">
+    <span onclick="document.getElementById('modal-delete').style.display='none'" class="close"
+          title="Close Modal">×</span>
+        <form class="modal-content" action="{% url 'profile delete' object.pk %}" method="post">
+            <div class="container">
+                <h1>Delete Account</h1>
+                <p>Are you sure you want to delete your account?</p>
+                {% csrf_token %}
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('modal-delete').style.display='none'"
+                            class="cancelbtn">
+                        Cancel
+                    </button>
+                    <input onclick="document.getElementById('modal-delete').style.display='none'" class="deletebtn"
+                           type="submit" value="Delete">
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+{% endblock %}

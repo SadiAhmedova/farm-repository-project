@@ -1,0 +1,38 @@
+
+{% extends 'main/base.html' %}
+{% block title %} My Orders {% endblock %}
+
+{% block page_content %}
+
+{% load order_filter %}
+    <div class="whole-page">
+        <div class="header-orders">
+            <div class="head-ord"><b>Orders</b></div>
+            <div class="count-orders">{{ count_of_my_orders }} orders</div>
+        </div>
+
+        <div class="orders-window">
+            <div class="fill"></div>
+            <table class="my-orders">
+                <tr class="order-nav">
+                    <th>Order</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Items Count</th>
+                    <th>Total</th>
+                </tr>
+                {% for order in request.user.orders.all %}
+                    <tr>
+                        <td><a href="{% url 'detail order' order.id %}">#{{ order.id }}</a></td>
+                        <td>{{ order.created_at }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>{{ order.items.all.count }}</td>
+                        <td>${{ order_total_prices|default:0|get_item:order.id|floatformat:2}}</td>
+                    </tr>
+                {% endfor %}
+
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% load static %}
+<div class=" show card animals filterDiv">
+    <a href="{% url 'details animal' animal.pk %}">
+        {% if animal.photo %}
+            <img class="product-card-image" src="{{ animal.photo.url }}" alt="animal photo">
+        {% else %}
+            <img class="product-card-image" src="{% static 'images/meat.jpg' %}" alt="animal photo">
+        {% endif %}
+    </a>
+    <h1>{{ animal }}</h1>
+    <p class="price">${{ animal.price|floatformat:2 }}</p>
+
+    {% if request.user.is_authenticated and request.user.id != animal.user_id %}
+        <button id="add-to-cart-AnimalProduct-{{ animal.pk }}"
+                onclick="addToCart('AnimalProduct',{{ animal.pk }})">
+            <a
+                    hx-get="{% url 'add to cart' item_type='AnimalProduct' product_id=animal.id %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+            >
+                Add to cart
+            </a>
+        </button>
+    {% endif %}
+</div>

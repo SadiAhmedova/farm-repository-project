@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Update profile {% endblock %}
+{% block page_content %}
+    <div class="edit-form">
+
+        <div class="edit-item item3">
+            <h1 class="big-text">Edit Your Profile</h1>
+            <form action="{% url 'profile edit' object.pk %}" method="post"  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="cust-button edit-button" type="submit">Save Changes</button>
+            </form>
+        </div>
+
+        <div class="edit-item item4">
+            <img alt="Edit Photo" src="{% static 'images/undraw_design_feedback_re_8gtk.svg' %}">
+        </div>
+    </div>
+
+{% endblock %}

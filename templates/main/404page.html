@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} 404 {% endblock %}
+{% block page_content %}
+    <div class="error-div">
+        <div class="error-item item2">
+            <h1 class="big-text">Page Not Found!</h1>
+            <p class="error-text">Sorry, this page is not found or does not exist!</p>
+            <hr>
+            <a class="cust-button errorBtn" href="{% url 'home' %}" role="button">Go To Our Home Page</a>
+        </div>
+        <div class="error-item item1">
+            <img alt="Login photo" src="{% static 'images/undraw_warning_re_eoyh.svg' %}">
+        </div>
+    </div>
+{% endblock %}

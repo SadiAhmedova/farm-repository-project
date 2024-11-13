@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Update {{ nut.type }} {{ nut.name }} {% endblock %}
+
+{% block page_content %}
+    {% if request.user.id == nut.user_id %}
+        <div class="edit-form">
+            <div class="edit-item item3">
+                <h1 class="big-text">Edit Your Nuts Product</h1>
+                <form action="{% url 'edit nut' nut.pk %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="cust-button edit-button" style="margin:15px 0 0 175px;" type="submit">Save Changes
+                    </button>
+                </form>
+            </div>
+            <div class="edit-item item4">
+                <img alt="Edit Photo" src="{% static 'images/undraw_empty_cart_co35.svg' %}">
+            </div>
+        </div>
+    {% else %}
+        {% include 'main/404page.html' %}
+    {% endif %}
+
+{% endblock %}

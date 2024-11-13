@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Add animal product {% endblock %}
+
+{% block page_content %}
+
+    <div class="add-product">
+            <div class="addProductDiv animal">
+                <h1 class="big-text animal">Add Animal Product:</h1>
+                <form action="{% url 'add animal' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="cust-button addBtn" type="submit">Create</button>
+                </form>
+            </div>
+            <div class="farmerGirlDiv animal">
+                <img alt="Farmer Girl Photo" src="{% static 'images/undraw_farm_girl_dnpe.svg' %}">
+
+            </div>
+    </div>
+{% endblock %}

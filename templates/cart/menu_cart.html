@@ -1,0 +1,6 @@
+{% load static %}
+
+<a id="menu-cart-button" class="" href="{% url 'cart' %}">
+    <img width="50px" height="30px" src="{% static 'images/cart.png' %}" alt="Cart">
+    <span>{{ cart|length }}</span>
+</a>

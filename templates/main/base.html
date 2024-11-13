@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %} {% endblock %} | Farm</title>
+    <script type="text/javascript" src="{% static 'functions.js' %}"></script>
+    <link rel="icon" type="image/x-icon" href="{% static "images/favicon.ico" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+</head>
+
+<body>
+
+
+<div class="navbar">
+
+    <ul class="navbar-list" id="navbar-list">
+        <li class=" left-item navitem activebtn "><a href="{% url 'home' %}">Farm</a></li>
+
+        {% if request.user.is_authenticated %}
+            <li class="left-item navitem" ><a href="{% url 'add vegetable' %}">Add Vegetable and Fruit</a></li>
+            <li class="left-item navitem"><a href="{% url 'add animal' %}">Add Animal Product</a></li>
+            <li class="left-item navitem"><a href="{% url 'add dairy' %}">Add Dairy Product</a></li>
+            <li class="left-item navitem last-nav"><a href="{% url 'add nut' %}">Add Nut</a></li>
+            <li class="right-item navitem last-nav">
+                <a class="nav-link " href="{% url 'profile details' pk=request.user.pk %}">Profile</a>
+            </li>
+            <li class="right-item navitem menu-cart"
+                id="menu-cart"
+                hx-get="{% url 'menu cart' %}"
+                hx-trigger="update-menu-cart from:body"
+                hx-swap="innerHTML"
+            >
+                {% include 'cart/menu_cart.html' %}
+            </li>
+            <li class="right-item navitem">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+            </li>
+        {% else %}
+            {% if current_page == 'home' %}
+
+                <li  class="left-item navitem"><a href="#" onclick="filterSelection('vegetables')">Vegetables and
+                    Fruits</a></li>
+                <li class="left-item navitem"><a href="#" onclick="filterSelection('animals')">Animal Products</a></li>
+                <li class="left-item navitem"><a href="#" onclick="filterSelection('dairies')">Dairy Products</a></li>
+                <li class="left-item navitem last-nav"><a href="#" onclick="filterSelection('nuts')">Nut Products</a>
+                </li>
+            {% endif %}
+
+            <li class="right-item navitem last-nav">
+                <a class="nav-link" href="{% url "login" %}">Log In</a>
+            </li>
+            <li class="right-item navitem ">
+                <a class="nav-link" href="{% url "register" %}">Register</a>
+            </li>
+        {% endif %}
+    </ul>
+
+    <p class="menu-icon" onclick="toggleNavbar()">
+        &#9776;
+    </p>
+</div>
+
+<div class="main">
+
+    {% block page_content %}
+
+    {% endblock %}
+</div>
+
+<div id="footer">
+    © 2023, June:
+    <img alt="Icon" src="{% static 'images/favicon.ico' %}">
+    Farm, Sadi's project
+</div>
+
+<script src="https://unpkg.com/htmx.org@1.9.4"></script>
+
+
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,27 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Sign up {% endblock %}
+{% block page_content %}
+    <div class="create-from">
+
+        <div class="flex-container create-item item1">
+            <h1 class="big-text">Welcome!</h1>
+            <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="login-link">
+                    <p> Have an account?</p>
+                    <a href="{% url "login" %}">Sign in</a>
+                </div>
+                <div class="register-button-div">
+                    <button class="cust-button create-button" type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+
+
+        <div class="create-item item2">
+            <img style="width:600px;height: 500px" alt="Signup photo" src="{% static 'images/undraw_sign_up_n6im.svg' %}">
+        </div>
+    </div>
+{% endblock %}

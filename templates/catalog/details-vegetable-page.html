@@ -1,0 +1,91 @@
+{% extends 'main/base.html' %}
+{% block title %} {{ plant.name }}{% endblock %}
+
+{% load static %}
+{% block page_content %}
+    <div class="details-content">
+
+        <div class="details-image">
+            {% if  plant.photo %}
+                <img class="details-image" src="{{ plant.photo.url }}" alt="{{ plant }}">
+
+            {% else %}
+                <img class="details-image"
+                     src="{% static 'images/fruit-and-veg.jpg' %}"
+                     alt="Vegetable Photo">
+            {% endif %}
+        </div>
+
+        <div class="test">
+            <div class="profile-details">
+                <div class="details-profile-icon">
+                    <a href="{% url 'profile details' profile.id %}">
+                        {% if  profile.profile_picture %}
+                            <img class="details-image-profile" src="{{ profile.profile_picture.url }}"
+                                 alt="Profile Photo">
+                        {% else %}
+                            {% if profile.gender == 'Female' %}
+                                <img class="details-image-profile"
+                                     src="{% static 'images/undraw_female_avatar_efig.svg' %}"
+                                     alt="Meat Photo">
+                            {% else %}
+                                <img class="details-image-profile"
+                                     src="{% static 'images/undraw_male_avatar_g98d.svg' %}"
+                                     alt="Meat Photo">
+                            {% endif %}
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="details-profile-name">
+                    <p><a href="{% url 'profile details' profile.id %} "
+                          class="name-profile">{{ profile.get_user_name }}</a></p>
+                </div>
+            </div>
+            <div class="details-name"><h1 class="big-text">{{ plant }}</h1></div>
+            <div class="details-information">
+                <div class="details-detail"><h3>Price:</h3>
+                    ${{ plant.price }}
+                </div>
+
+                {% if plant.production %}
+                    <div class="details-detail"><h3>Country production:</h3> {{ plant.production }}</div>
+                {% endif %}
+            </div>
+            {% if  request.user.is_authenticated %}
+                {% if plant.user_id != request.user.pk %}
+                    <button id="add-to-cart-VegetableAndFruit-{{ plant.id }}" onclick="addToCart('VegetableAndFruit',{{ plant.id }})"
+                            class="buy-button cust-button animal-add"
+                            hx-get="{% url 'add to cart' item_type='VegetableAndFruit' product_id=plant.id %}"
+                            hx-target="#menu-cart-button"
+                            hx-swap="outerHTML">
+                        Add to cart
+                    </button>
+                {% else %}
+                    <a class="cust-button editBtn" href="{% url 'edit vegetable' plant.pk %}">Edit</a>
+                    <a id="deleteProfileBtn" class="cust-button editBtn"
+                       onclick="document.getElementById('modal-delete').style.display='block'">Delete</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div id="modal-delete" class="modal">
+    <span onclick="document.getElementById('modal-delete').style.display='none'" class="close"
+          title="Close Modal">×</span>
+        <form class="modal-content" action="{% url 'delete vegetable' plant.pk %}" method="post">
+            <div class="container">
+                <h1>Delete Product</h1>
+                <p>Are you sure you want to delete this {{ plant }}?</p>
+                {% csrf_token %}
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('modal-delete').style.display='none'"
+                            class="cancelbtn">
+                        Cancel
+                    </button>
+                    <input onclick="document.getElementById('modal-delete').style.display='none'" class="deletebtn"
+                           type="submit" value="Delete">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Sign in {% endblock %}
+{% block page_content %}
+
+
+        <div class="login-form">
+
+
+            <div class="login-item item2">
+                <h1 class="big-text">Sign in!</h1>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                                <div class="registration-link">
+                    <p>Don't have an account?</p>
+                    <a href="{% url 'register' %}">Sign up</a>
+                </div>
+                    <div class="button-div">
+                        <button class="cust-button" type="submit">Log in</button>
+                    </div>
+                </form>
+
+            </div>
+           <div class="login-item item1">
+                <img alt="Login photo" src="{% static 'images/undraw_login_re_4vu2.svg' %}">
+            </div>
+
+        </div>
+{% endblock %}

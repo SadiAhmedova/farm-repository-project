@@ -1,0 +1,137 @@
+
+h1, p {
+    color: #1e1501;
+}
+
+.profile-image {
+    position: absolute;
+    margin: 0 70px 0 30px;
+    float: left;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 250px;
+    height: 250px;
+    background-size: cover;
+    background: no-repeat center;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.profile-image h1 {
+    text-align: center;
+}
+
+
+.profile-information {
+    position: absolute;
+    margin: 300px 0 0 30px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.prof-button {
+    margin: 0 10px 0 0;
+}
+
+#profile-buttons {
+    margin-left: 8px;
+}
+
+
+.profile-products {
+    max-width: fit-content;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    position: relative;
+    margin: 10px 0 0 320px;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: space-evenly;
+    padding: 40px 0;
+}
+
+div.product-card {
+    background-color: #F2E9D2;
+    width: 200px;
+    margin: 5px;
+    text-align: center;
+    line-height: 35px;
+}
+
+.product-card {
+    display: inline-block;
+    transition: 0.3s;
+    width: 40%;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 275px;
+    margin: auto;
+    text-align: center;
+    font-family: arial, serif;
+    align-items: center;
+    text-decoration: none;
+    opacity: 0.8;
+    align-self: center;
+}
+
+.product-card:hover {
+    box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+
+.small-card-image {
+    border-radius: 5px 5px 0 0;
+    width: 200px;
+    height: 200px;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+
+.product-card button {
+    position: relative;
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: #1e1501;
+    background-color: #c58f07;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.product-card button:hover {
+    opacity: 0.7;
+}
+
+.product-cart > h1 {
+    margin: -20px 0 0 0;
+}
+
+
+@media screen and (max-width: 960px) {
+    .profile-details-whole-page {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} Add vegetable or fruit {% endblock %}
+
+{% block page_content %}
+    <div class="add-product">
+        <div class="addProductDiv">
+            <h1 class="big-text">Add Vegetable or Fruit:</h1>
+            <form action="{% url 'add vegetable' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button class="cust-button addBtn" type="submit">Create</button>
+            </form>
+        </div>
+        <div class="farmerGirlDiv">
+            <img alt="Farmer Girl Photo" src="{% static 'images/undraw_farm_girl_dnpe.svg' %}">
+
+        </div>
+    </div>
+
+{% endblock %}

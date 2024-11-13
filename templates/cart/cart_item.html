@@ -1,0 +1,62 @@
+{% load static %}
+{% if item %}
+    <div class="cart-product" id="cart-item-{{ item.product.id }}">
+
+        <div>
+            {% if item.product.photo %}
+                <img class="product-photo" src="{{ item.product.photo.url }}" alt="Photo">
+            {% else %}
+                {% if item.item_type == 'VegetableAndFruit' %}
+                    <img alt="Vegetable Image" class="product-photo"
+                         src="{% static 'images/fruit-and-veg.jpg' %}">
+                {% elif item.item_type == 'AnimalProduct' %}
+                    <img class="product-photo"
+                         src="{% static 'images/meat.jpg' %}"
+                         alt="Meal Photo">
+                {% elif item.item_type == 'DairyProduct' %}
+                    <img class="product-photo"
+                         src="{% static 'images/milk-products.jpg' %}"
+                         alt="Dairy Photo">
+                {% elif item.item_type == 'Nut' %}
+                    <img class="product-photo"
+                         src="{% static 'images/nuts-and-dry-fruits.jpg' %}"
+                         alt="Nut Photo">
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="counter">
+            <button
+                    class="btn"
+                    hx-get="{% url 'update cart'  item.product.id  'decrement'  item.item_type %}"
+                    hx-target="#cart-item-{{ item.product.id }}"
+                    hx-swap="outerHTML"
+            >-
+            </button>
+            <span class="count">{{ item.quantity }} kg</span>
+            <button
+                    class="btn"
+                    hx-get="{% url 'update cart'  item.product.id  'increment' item.item_type %}"
+                    hx-target="#cart-item-{{ item.product.id }}"
+                    hx-swap="outerHTML"
+            >+
+            </button>
+        </div>
+        <div class="about">
+            <div class="title">
+                {{ item.product.name }}
+            </div>
+            <div class="subtitle">
+                ${{ item.total_price|floatformat:2 }}
+            </div>
+            <hr>
+        </div>
+        <div>
+            <a onclick="deleteCartItem('{{ item.item_type }}', '{{ item.product.id }}')">
+                <img src="{% static 'images/bin.png' %}" alt="Bin">
+            </a>
+        </div>
+    </div>
+{% endif %}
+
+
+

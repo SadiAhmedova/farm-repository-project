@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="show card nuts filterDiv">
+    <a href="{% url 'details nut' nut.pk %}">
+        {% if nut.photo %}
+            <img class="product-card-image" src="{{ nut.photo.url }}" alt="nut photo">
+        {% else %}
+            <img class="product-card-image" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
+        {% endif %}</a>
+    <h1>{{ nut }}</h1>
+    <p class="price">${{ nut.price|floatformat:2 }}</p>
+    {% if request.user.is_authenticated and request.user.id != nut.user_id %}
+        <button id="add-to-cart-Nut-{{ nut.pk }}" onclick="addToCart('Nut',{{ nut.pk }})"
+                hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"
+                hx-target="#menu-cart-button"
+                hx-swap="outerHTML"
+        >
+            Add to cart
+
+        </button>
+    {% endif %}
+</div>
+
+

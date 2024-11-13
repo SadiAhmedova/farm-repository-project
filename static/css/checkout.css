@@ -1,0 +1,19 @@
+.checkout-content {
+    position: relative;
+    display: flex;
+    border: #c58f07 dotted;
+    margin: 45px 0 20px 0;
+    padding: 10px;
+}
+.checkout-content > h2{
+        color:#352503;
+}
+
+
+.confirm-button{
+    margin:10px 0 0 -20px;
+}
+.confirm-button > a{
+    text-decoration: none;
+    color:#352503;
+}
