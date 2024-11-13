@@ -3,6 +3,8 @@ from pathlib import Path
 from django.core.management.utils import get_random_secret_key
 
 import environ
+import dj_database_url
+
 
 
 env = environ.Env()
@@ -32,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
 
     'farm_app.catalog',
     'farm_app.cart',
@@ -77,7 +80,9 @@ WSGI_APPLICATION = 'farm_app.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgres://localhost')
+    'default': dj_database_url.config(
+        default='postgres://localhost/db_farm_2023'
+    )
 }
 
 # Password validation
@@ -115,7 +120,7 @@ USE_TZ = True
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
