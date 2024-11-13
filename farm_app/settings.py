@@ -16,8 +16,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY',  default=get_random_secret_key())
 
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
+ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost']
 
-ALLOWED_HOSTS = ['farm-app.herokuapp.com']
 
 CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
 
