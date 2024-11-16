@@ -11,13 +11,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-@e0r%+2z5_c$%h(o_f4y6g(&)=iee$zq+3awp=*wdf$#n_yr(p'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost', '127.0.0.1']
 
 
-# CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
-CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1']
+CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
 
 
 SESSION_COOKIE_AGE = 86400
