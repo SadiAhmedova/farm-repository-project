@@ -1,25 +1,24 @@
 import os
 from pathlib import Path
 from django.core.management.utils import get_random_secret_key
-
 import environ
 import dj_database_url
+import django_heroku
 
 
-
-env = environ.Env()
-environ.Env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY',  default=get_random_secret_key())
+SECRET_KEY = 'django-insecure-@e0r%+2z5_c$%h(o_f4y6g(&)=iee$zq+3awp=*wdf$#n_yr(p'
 
-DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
+DEBUG = True
 
-ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost', '127.0.0.1']
 
 
-CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
+# CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
+CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1']
+
 
 SESSION_COOKIE_AGE = 86400
 CART_SESSION_ID = 'cart'
@@ -52,6 +51,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+
 ROOT_URLCONF = 'farm_app.urls'
 
 TEMPLATES = [
@@ -79,10 +81,21 @@ WSGI_APPLICATION = 'farm_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd6oqkpcqg36s6t',
+#         'USER': 'uapfi41aogr9q9',
+#         'PASSWORD': 'p01b3e060b30342f735b778c7faa44c2889f51319b3a2fa08e6d9915fa8b90848',
+#         'HOST': 'ccaml3dimis7eh.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgres://localhost/db_farm_2023'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
@@ -119,8 +132,14 @@ USE_TZ = True
 
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+
+django_heroku.settings(locals())
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
