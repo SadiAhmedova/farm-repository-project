@@ -4,14 +4,17 @@ from django.core.management.utils import get_random_secret_key
 import environ
 import dj_database_url
 import django_heroku
-
+import environ
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-@e0r%+2z5_c$%h(o_f4y6g(&)=iee$zq+3awp=*wdf$#n_yr(p'
 
-DEBUG = False
+
+SECRET_KEY =  os.getenv('SECRET_KEY', '87$-yv5gv-vszmuj_l8k8vrdd7x91iwmjs^^71janp6$l2o1no')
+
+
+DEBUG =  os.getenv('DEBUG', default=False)
 
 ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost', '127.0.0.1']
 
@@ -25,7 +28,6 @@ STRIPE_KEY_ID_PUBLISHABLE = ''
 
 
 INSTALLED_APPS = [
-    'farm_app.accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,11 +35,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
-
+    'farm_app.accounts',
     'farm_app.catalog',
     'farm_app.cart',
     'farm_app.order',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'farm_app_cloud',
+    'API_KEY': '172813744534628',
+    'API_SECRET': 'DgDQZ-1Udx2iC5BDRLpKhhdB7Ek',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,7 +64,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 
 ROOT_URLCONF = 'farm_app.urls'
@@ -80,20 +93,15 @@ WSGI_APPLICATION = 'farm_app.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd6oqkpcqg36s6t',
-#         'USER': 'uapfi41aogr9q9',
-#         'PASSWORD': 'p01b3e060b30342f735b778c7faa44c2889f51319b3a2fa08e6d9915fa8b90848',
-#         'HOST': 'ccaml3dimis7eh.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.getenv('DB_NAME', 'None'),
+        'USER': os.getenv('DB_USER', 'None'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'None'),
+        'HOST': os.getenv('DB_HOST', 'None'),
+        'PORT': os.getenv('DB_PORT', 5432),
     }
 }
 
@@ -134,6 +142,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -151,5 +160,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.FarmerUser'
 
 LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = '/accounts/login/'

@@ -41,7 +41,11 @@ function deleteCartItem(item_type, productId) {
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    document.getElementById(`cart-item-${productId}`).remove();
+                    var itemToRemove = document.getElementById(`cart-item-${productId}`);
+                    if (itemToRemove) {
+                        itemToRemove.remove();
+                    }
+
 
                     document.getElementById('cart-length-text').innerText = data.cart_length + ' items';
 
@@ -115,14 +119,19 @@ function w3RemoveClass(element, name) {
 
 
 var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("navbtn");
-for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function () {
-        var current = document.getElementsByClassName("activebtn");
-        current[0].className = current[0].className.replace(" activebtn", "");
-        this.className += " activebtn";
-    });
+if (btnContainer) {
+    var btns = btnContainer.getElementsByClassName("navbtn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("activebtn");
+            if (current.length > 0) {
+                current[0].className = current[0].className.replace(" activebtn", "");
+            }
+            this.className += " activebtn";
+        });
+    }
 }
+
 
 
 function toggleNavbar() {

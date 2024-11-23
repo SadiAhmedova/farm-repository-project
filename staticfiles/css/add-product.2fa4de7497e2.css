@@ -1,0 +1,28 @@
+.add-product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+
+.addProductDiv {
+    margin: 50px 20px 0 0;
+}
+
+@media screen and (max-width: 600px) {
+    .addProductDiv > input {
+        width: 100%;
+    }
+
+    .farmerGirlDiv img {
+        width: 100%;
+        height: 450px;
+    }
+}
+
+.farmerGirlDiv img {
+    width: 500px;
+    height: 450px;
+}
+

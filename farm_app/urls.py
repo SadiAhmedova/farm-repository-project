@@ -13,9 +13,9 @@ urlpatterns = [
                   path('cart/', include('farm_app.cart.urls')),
                   path('order/', include('farm_app.order.urls')),
                   path('api/', include('rest_framework.urls')),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# if DEBUG:
-#     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+              ]
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = 'farm_app.accounts.views.error_404_view'

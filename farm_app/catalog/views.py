@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from django.urls import reverse, resolve
 from django.views import generic as views
 
-from farm_app.accounts.models import FarmerUser
+from accounts.models import FarmerUser
 from farm_app.catalog.forms import *
 from farm_app.catalog.mixins import UserPermissionMixin
 from farm_app.catalog.models import *
@@ -15,6 +15,7 @@ UserModel = get_user_model()
 
 class IndexView(views.ListView):
     template_name = 'main/home.html'
+
 
     def get_queryset(self):
         veg_fruit = VegetableAndFruit.objects.all()

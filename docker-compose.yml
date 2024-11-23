@@ -5,16 +5,18 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=d6oqkpcqg36s6t
-      - POSTGRES_USER=uapfi41aogr9q9
-      - POSTGRES_PASSWORD=p01b3e060b30342f735b778c7faa44c2889f51319b3a2fa08e6d9915fa8b90848
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
       - PGDATA=/var/lib/postgresql/data/pgdata
     ports:
       - "5432:5432"
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U uapfi41aogr9q9" ]
+      test: [ "CMD-SHELL", "pg_isready -U ${DB_USER}" ]
       interval: 5s
       timeout: 10s
       retries: 5
@@ -22,7 +24,7 @@ services:
   web:
     build: .
     image: sadidocker/farm_app
-    entrypoint: [ "./wait-for-it.sh", "ccaml3dimis7eh.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432", "--timeout=60", "--strict", "--" ]
+    entrypoint: [ "./wait-for-it.sh", "${DB_HOST}:5432", "--timeout=60", "--strict", "--" ]
     command: >
       sh -c "python manage.py migrate &&
              python manage.py collectstatic --noinput &&
@@ -37,7 +39,7 @@ services:
       postgres:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgres://uapfi41aogr9q9:p01b3e060b30342f735b778c7faa44c2889f51319b3a2fa08e6d9915fa8b90848@ccaml3dimis7eh.cluster-czz5s0kz4scl.eu-west-1.rds.amazonaws.com:5432/d6oqkpcqg36s6t
+      - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/${DB_NAME}
 
   nginx:
     image: nginx:latest
