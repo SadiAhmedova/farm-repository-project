@@ -1,2 +1,3 @@
 postgresql
 envs/
+.env
