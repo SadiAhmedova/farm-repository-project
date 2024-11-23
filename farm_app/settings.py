@@ -48,6 +48,13 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': 'DgDQZ-1Udx2iC5BDRLpKhhdB7Ek',
 }
 
+COLLECTSTATIC_IGNORE = [
+    'admin/css/*',
+    'admin/img/*',
+    'admin/js/*',
+]
+
+
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
