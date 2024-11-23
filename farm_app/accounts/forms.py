@@ -3,7 +3,7 @@ from datetime import date
 from django import forms
 from django.contrib.auth import forms as auth_forms
 
-from models import FarmerUser
+from farm_app.farm_app.accounts.models import FarmerUser
 
 
 
