@@ -1,6 +1,6 @@
 from django.urls import path
 
-from farm_app.order.views import start_order, MyOrders,order_details
+from farm_app.farm_app.order.views import start_order, MyOrders,order_details
 
 urlpatterns = [
     path('start_order/', start_order, name='start order'),

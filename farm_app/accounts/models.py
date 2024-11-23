@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from farm_app.accounts.validators import validate_only_letter_value
-from farm_app.catalog.models import ChoicesLengthMixin
-from farm_app.catalog.validators import validate_image_size
+from validators import validate_only_letter_value
+from farm_app.farm_app.catalog.models import ChoicesLengthMixin
+from farm_app.farm_app.catalog.validators import validate_image_size
 
 
 class Gender(ChoicesLengthMixin, Enum):

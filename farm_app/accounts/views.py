@@ -1,15 +1,14 @@
 from itertools import chain
 
 from django.conf.urls.static import static
-from django.http import Http404
 from django.shortcuts import render, get_object_or_404
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy, reverse, resolve
 
-from farm_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
-from farm_app.accounts.models import FarmerUser
-from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
+from farm_app.farm_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
+from farm_app.farm_app.accounts.models import FarmerUser
+from farm_app.farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
 UserModel = get_user_model()
 

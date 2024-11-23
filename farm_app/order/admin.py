@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from farm_app.order.models import Order, OrderItem
+from farm_app.farm_app.order.models import Order, OrderItem
 
 
 @admin.register(Order)

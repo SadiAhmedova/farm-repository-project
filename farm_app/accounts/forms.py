@@ -1,11 +1,10 @@
 from datetime import date
 
 from django import forms
-from django.contrib.auth import forms as auth_forms, get_user_model
+from django.contrib.auth import forms as auth_forms
 
-from farm_app.accounts.models import FarmerUser
-from farm_app.common.helpers import BootstrapFormMixin
-from farm_app.catalog.models import VegetableAndFruit
+from models import FarmerUser
+
 
 
 class CreateProfileForm(auth_forms.UserCreationForm):

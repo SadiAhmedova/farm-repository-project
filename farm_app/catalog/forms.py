@@ -3,7 +3,7 @@ from datetime import date
 from django import forms
 from django.forms import ImageField
 
-from farm_app.catalog.models import VegetableAndFruit, DairyProduct, AnimalProduct, Nut
+from farm_app.farm_app.catalog.models import VegetableAndFruit, DairyProduct, AnimalProduct, Nut
 
 labels = {
     'name': 'Name of the product',

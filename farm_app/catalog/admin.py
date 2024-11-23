@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from farm_app.catalog.models import VegetableAndFruit, DairyProduct, AnimalProduct, Nut
+from farm_app.farm_app.catalog.models import VegetableAndFruit, DairyProduct, AnimalProduct, Nut
 
 
 @admin.register(VegetableAndFruit)

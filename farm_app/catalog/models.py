@@ -2,13 +2,10 @@ import datetime
 from enum import Enum
 
 from django.core.exceptions import ValidationError
-from django.utils import timezone
-from django.utils.safestring import mark_safe
-from rest_framework import serializers
 from django.db import models
 
-from farm_app.accounts.validators import validate_only_letter_value
-from farm_app.catalog.validators import validate_image_size
+from farm_app.farm_app.accounts.validators import validate_only_letter_value
+from farm_app.farm_app.catalog.validators import validate_image_size
 
 UserModel = 'accounts.FarmerUser'
 
