@@ -43,9 +43,9 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'farm_app_cloud',
-    'API_KEY': '172813744534628',
-    'API_SECRET': 'DgDQZ-1Udx2iC5BDRLpKhhdB7Ek',
+    'CLOUD_NAME': os.getenv('CLOUD_NAME', None),
+    'API_KEY': os.getenv('API_KEY', None),
+    'API_SECRET': os.getenv('API_SECRET', None),
 }
 
 COLLECTSTATIC_IGNORE = [
