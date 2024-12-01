@@ -31,7 +31,7 @@ class FarmerUser(AbstractUser):
 
     email =models.EmailField()
     profile_picture = models.ImageField(upload_to='uploads/', blank=True, null=True, validators=(validate_image_size,))
-    
+
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(choices=Gender.choice(),
                               max_length=Gender.max_length(),
