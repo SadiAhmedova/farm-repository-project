@@ -6,10 +6,13 @@ import dj_database_url
 import django_heroku
 import environ
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+environ.Env.read_env('.env')
 
 SECRET_KEY =  os.getenv('SECRET_KEY', '87$-yv5gv-vszmuj_l8k8vrdd7x91iwmjs^^71janp6$l2o1no')
 
@@ -42,18 +45,13 @@ INSTALLED_APPS = [
     'cloudinary',
     'cloudinary_storage',
 ]
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME', None),
-    'API_KEY': os.getenv('API_KEY', None),
-    'API_SECRET': os.getenv('API_SECRET', None),
-}
 
-COLLECTSTATIC_IGNORE = [
-    'admin/css/*',
-    'admin/img/*',
-    'admin/js/*',
-]
-
+cloudinary.config(
+    cloud_name= os.getenv('CLOUD_NAME', None),
+    api_key=os.getenv('API_KEY', None),
+    api_secret=os.getenv('API_SECRET', None),
+    secure=True
+)
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import VegetableAndFruit, AnimalProduct, Nut, DairyProduct
+from farm_app.catalog.models import VegetableAndFruit, AnimalProduct, Nut, DairyProduct
 
 
 class AnimalProductSerializer(serializers.ModelSerializer):

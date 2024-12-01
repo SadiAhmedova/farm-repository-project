@@ -5,7 +5,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 from django.urls import reverse
 
-from farm_app.farm_app.cart.cart import Cart
+from farm_app.cart.cart import Cart
 from json import JSONEncoder
 
 

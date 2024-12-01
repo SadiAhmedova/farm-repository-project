@@ -4,9 +4,9 @@ from django.contrib.auth import get_user_model
 from django.views import generic as views
 from django.shortcuts import render, redirect, get_object_or_404
 
-from farm_app.farm_app.cart.cart import Cart
-from farm_app.farm_app.catalog.models import AnimalProduct, Nut, DairyProduct, VegetableAndFruit
-from farm_app.farm_app.order.models import Order, OrderItem
+from farm_app.cart.cart import Cart
+from farm_app.catalog.models import AnimalProduct, Nut, DairyProduct, VegetableAndFruit
+from farm_app.order.models import Order, OrderItem
 
 UserModel = get_user_model()
 

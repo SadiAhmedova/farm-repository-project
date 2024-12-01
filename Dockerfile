@@ -1,4 +1,4 @@
-FROM python:3.10
+FROM python:3.9.6
 
 RUN apt-get update && apt-get install -y \
     libpq-dev \
@@ -15,9 +15,15 @@ RUN python -m venv /app/.env
 RUN /app/.env/bin/pip install --upgrade pip
 RUN /app/.env/bin/pip install -r requirements.txt
 
+COPY wait-for-it.sh /app/
+RUN chmod +x /app/wait-for-it.sh
+
+
 COPY . /app/
 
 ENV PATH="/app/.env/bin:$PATH"
+
+
 
 RUN /app/.env/bin/python manage.py collectstatic --noinput
 RUN /app/.env/bin/python manage.py makemigrations

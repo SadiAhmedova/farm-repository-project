@@ -5,9 +5,9 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from farm_app.farm_app.accounts.validators import validate_only_letter_value
-from farm_app.farm_app.catalog.models import ChoicesLengthMixin
-from farm_app.farm_app.catalog.validators import validate_image_size
+from farm_app.accounts.validators import validate_only_letter_value
+from farm_app.catalog.models import ChoicesLengthMixin
+from farm_app.catalog.validators import validate_image_size
 
 
 class Gender(ChoicesLengthMixin, Enum):
@@ -30,7 +30,7 @@ class FarmerUser(AbstractUser):
     last_name = models.CharField(null=True,blank=True,max_length=LAST_NAME_MAX_LENGTH, validators=[validate_only_letter_value])
 
     email =models.EmailField()
-    profile_picture = models.ImageField(upload_to='uploads/', blank=True, null=True, validators=(validate_image_size,))
+    profile_picture = models.URLField(max_length=500, blank=True, null=True, validators=(validate_image_size,))
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(choices=Gender.choice(),
                               max_length=Gender.max_length(),

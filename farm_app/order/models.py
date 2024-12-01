@@ -4,7 +4,7 @@ from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 
-from farm_app.farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
+from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
 UserModel = 'accounts.FarmerUser'
 

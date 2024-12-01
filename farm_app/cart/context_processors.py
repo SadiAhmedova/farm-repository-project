@@ -1,4 +1,4 @@
-from farm_app.farm_app.cart.cart import Cart
+from farm_app.cart.cart import Cart
 
 
 def cart(request):

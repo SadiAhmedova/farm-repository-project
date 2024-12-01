@@ -3,7 +3,7 @@ from datetime import date
 from django import forms
 from django.contrib.auth import forms as auth_forms
 
-from farm_app.farm_app.accounts.models import FarmerUser
+from farm_app.accounts.models import FarmerUser
 
 
 
@@ -21,15 +21,15 @@ class CreateProfileForm(auth_forms.UserCreationForm):
 
     class Meta(auth_forms.UserCreationForm.Meta):
         model = FarmerUser
-        fields = ('first_name', 'last_name', 'username','gender', 'date_of_birth', 'email','profile_picture', 'password1', 'password2')
+        fields = ['first_name', 'last_name', 'username','gender', 'date_of_birth', 'email','profile_picture', 'password1', 'password2']
 
         widgets = {
-            'first_name': forms.TextInput(attrs={'class': 'form-field', 'required': True}),
-            'last_name': forms.TextInput(attrs={'class': 'form-field', 'required': True}),
-            'username': forms.TextInput(attrs={'class': 'form-field', 'required': True}),
-            'gender': forms.Select(attrs={'class': 'form-field'}),
-            'email': forms.EmailInput(attrs={'class': 'form-field'}),
-            'date_of_birth': forms.DateInput(attrs={'class':'form-field', 'type':'date','max':date.today(), 'required': True})
+            'first_name': forms.TextInput(attrs={'id':0,'class': 'form-field', 'required': True}),
+            'last_name': forms.TextInput(attrs={'id':1, 'class': 'form-field', 'required': True}),
+            'username': forms.TextInput(attrs={'id':2,'class': 'form-field', 'required': True}),
+            'gender': forms.Select(attrs={'id':3, 'class': 'form-field'}),
+            'email': forms.EmailInput(attrs={'id':4, 'class': 'form-field'}),
+            'date_of_birth': forms.DateInput(attrs={'id':5, 'class':'form-field', 'type':'date','max':date.today() , 'required': True})
         }
 
     def __init__(self, *args, **kwargs):

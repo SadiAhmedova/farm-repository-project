@@ -1,4 +1,5 @@
 from itertools import chain
+from pyexpat.errors import messages
 
 from django.conf.urls.static import static
 from django.shortcuts import render, get_object_or_404
@@ -6,10 +7,11 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_views, login, get_user_model
 from django.urls import reverse_lazy, reverse, resolve
 
-from farm_app.farm_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
-from farm_app.farm_app.accounts.models import FarmerUser
-from farm_app.farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
+from farm_app.accounts.forms import CreateProfileForm, LoginProfileForm, EditProfileForm
+from farm_app.accounts.models import FarmerUser
+from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
+import cloudinary.uploader
 UserModel = get_user_model()
 
 
@@ -29,9 +31,18 @@ class ProfileRegisterView(views.CreateView):
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
+        if self.request.FILES.get('profile_picture'):
+            uploaded_file = self.request.FILES['profile_picture']
+            upload_result = cloudinary.uploader.upload(uploaded_file)
+
+            form.instance.profile_picture = upload_result['secure_url']
+
         result = super().form_valid(form)
         login(self.request, self.object)
+        messages.success(self.request, "Your account has been created successfully!")
         return result
+
+
 
 
 class ProfileLogoutView(auth_views.LogoutView):
