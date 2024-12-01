@@ -9,7 +9,7 @@
         {% endif %}
     </a>
     <h1>{{ dairy }}</h1>
-    <p class="price">${{ dairy.price|floatformat:2 }}</p>
+    <p class="price">${{ dairy.formatted_price }}</p>
 
     {% if request.user.is_authenticated and request.user.id != dairy.user_id %}
         <button id="add-to-cart-DairyProduct-{{ dairy.pk }}" onclick="addToCart('DairyProduct',{{ dairy.pk }})"

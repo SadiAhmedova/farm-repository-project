@@ -8,7 +8,7 @@
         {% endif %}
     </a>
     <h1>{{ animal }}</h1>
-    <p class="price">${{ animal.price|floatformat:2 }}</p>
+    <p class="price">${{ animal.formatted_price }}</p>
 
     {% if request.user.is_authenticated and request.user.id != animal.user_id %}
         <button id="add-to-cart-AnimalProduct-{{ animal.pk }}"

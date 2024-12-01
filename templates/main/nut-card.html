@@ -8,7 +8,8 @@
             <img class="product-card-image" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
         {% endif %}</a>
     <h1>{{ nut }}</h1>
-    <p class="price">${{ nut.price|floatformat:2 }}</p>
+<p class="price">$ {{ vegetable.formatted_price }}</p>
+
     {% if request.user.is_authenticated and request.user.id != nut.user_id %}
         <button id="add-to-cart-Nut-{{ nut.pk }}" onclick="addToCart('Nut',{{ nut.pk }})"
                 hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"

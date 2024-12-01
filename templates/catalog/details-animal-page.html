@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="details-detail"><h3>Price:</h3>
-                    ${{ meat.price }}
+                    ${{ meat.formatted_price }}
                 </div>
 
 
@@ -54,7 +54,7 @@
                     <div class="details-detail"><h3>Country production:</h3>{{ meat.production }}</div><br>
                 {% endif %}
                 {% if meat.date_of_birth %}
-                    <div class="details-detail"><h3>Birthdate of the animal:</h3> {{ meat.date_of_birth }}</div>
+                    <div class="details-detail"><h3>Animal's age:</h3> {{ meat.age }}</div>
                 {% endif %}
             </div>
             {% if  request.user.is_authenticated %}

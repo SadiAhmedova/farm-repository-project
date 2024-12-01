@@ -115,6 +115,10 @@ class VegetableAndFruit(models.Model):
     def to_json(self):
         return '{"name": "%s"}' % self.name
 
+    @property
+    def formatted_price(self):
+        return f"{self.price:.2f}"
+
     def __str__(self):
         return f'{self.name}'
 
@@ -147,6 +151,10 @@ class DairyProduct(models.Model):
     def to_json(self):
         return '{"name": "%s"}' % self.name
 
+    @property
+    def formatted_price(self):
+        return f"{self.price:.2f}"
+
     def __str__(self):
         if self.percent:
             return f'{self.name} {self.percent}%'
@@ -176,6 +184,10 @@ class AnimalProduct(models.Model):
         UserModel,
         on_delete=models.CASCADE,
     )
+
+    @property
+    def formatted_price(self):
+        return f"{self.price:.2f}"
 
     @property
     def age(self):
@@ -222,6 +234,10 @@ class Nut(models.Model):
         UserModel,
         on_delete=models.CASCADE,
     )
+
+    @property
+    def formatted_price(self):
+        return f"{self.price:.2f}"
 
     def clean(self):
         if len(self.name) > 15:
