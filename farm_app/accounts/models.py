@@ -30,7 +30,7 @@ class FarmerUser(AbstractUser):
     last_name = models.CharField(null=True,blank=True,max_length=LAST_NAME_MAX_LENGTH, validators=[validate_only_letter_value])
 
     email =models.EmailField()
-    profile_picture = models.URLField(max_length=500, blank=True, null=True, validators=(validate_image_size,))
+    profile_picture = models.URLField(max_length=500, blank=True, null=True)
     date_of_birth = models.DateField(null=True, blank=True)
     gender = models.CharField(choices=Gender.choice(),
                               max_length=Gender.max_length(),
