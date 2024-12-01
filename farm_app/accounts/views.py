@@ -1,5 +1,5 @@
 from itertools import chain
-from pyexpat.errors import messages
+from django.contrib import messages
 
 from django.conf.urls.static import static
 from django.shortcuts import render, get_object_or_404
