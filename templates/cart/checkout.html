@@ -35,17 +35,17 @@
 
                     <div>
                         <label for="email">Email</label>
-                        <input id="email" name="email" required class="form-field checkfirld" type="email" value="{{ request.user.email }}">
+                        <input id="email" name="email" required class="form-field checkfield" type="email" value="{{ request.user.email }}">
                     </div>
                     <div>
                         <label for="phone" >Phone</label>
-                        <input id="phone" name="phone" required maxlength="10" minlength="10" class="form-field checkfirld" type="text">
+                        <input id="phone" name="phone" required maxlength="10" minlength="10" class="form-field checkfield" type="text">
                     </div>
                 </div>
                 <div class="checkout-content">
                     <h2>Payment information</h2>
                     <label for="methods">Payment method</label>
-                    <select id="methods"class="form-field checkfirld" name="methods">
+                    <select id="methods" class="form-field checkfield" name="methods" style="height: 20px;">
                         <option value="cash">Cash</option>
                         <option value="credit">Credit/Debit Card</option>
                         <option value="banktransfer">Bank Transfer</option>
