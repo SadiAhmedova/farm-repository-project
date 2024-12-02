@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
-from farm_app.farm_app.accounts.validators import validate_ten_digits
+from farm_app.accounts.validators import validate_ten_digits
 
 UserModel = 'accounts.FarmerUser'
 
