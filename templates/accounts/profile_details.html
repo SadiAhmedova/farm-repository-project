@@ -145,7 +145,7 @@
     <div id="modal-delete" class="modal">
     <span onclick="document.getElementById('modal-delete').style.display='none'" class="close"
           title="Close Modal">×</span>
-        <form class="modal-content" action="{% url 'profile delete' object.pk %}" method="post">
+        <form class="modal-content" action="{% url 'profile delete' request.user.pk %}" method="post">
             <div class="container">
                 <h1>Delete Account</h1>
                 <p>Are you sure you want to delete your account?</p>
