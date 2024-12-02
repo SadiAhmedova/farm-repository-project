@@ -191,7 +191,15 @@ class AnimalProduct(models.Model):
 
     @property
     def age(self):
-        return datetime.datetime.now().year - self.date_of_birth.year
+        years = datetime.datetime.now().year - self.date_of_birth.year
+        months = datetime.datetime.now().month - self.date_of_birth.month
+
+        if years == 0:
+            return f"{months} months"
+        elif years == 1:
+            return f"1 year and {months} months"
+        else:
+            return f"{years} years and {months} months"
 
     def clean(self):
         if len(self.name) > 15:

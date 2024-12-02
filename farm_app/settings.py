@@ -21,8 +21,6 @@ SECRET_KEY =  os.getenv('SECRET_KEY', '87$-yv5gv-vszmuj_l8k8vrdd7x91iwmjs^^71jan
 
 DEBUG =  os.getenv('DEBUG', default=False)
 
-DATE_INPUT_FORMATS = ['%d.%m.%Y']
-
 ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost', '127.0.0.1']
 
 

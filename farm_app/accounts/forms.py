@@ -18,11 +18,6 @@ class CreateProfileForm(auth_forms.UserCreationForm):
             attrs={'class': 'form-field', 'type': 'password'}),
     )
 
-    date_of_birth = forms.DateField(
-        widget=forms.DateInput(attrs={'class': 'form-field', 'type': 'date', 'placeholder': 'DD.MM.YYYY'}),
-        input_formats=['%d.%m.%Y']
-    )
-
     class Meta(auth_forms.UserCreationForm.Meta):
         model = FarmerUser
         fields = ['first_name', 'last_name', 'username','gender', 'date_of_birth', 'email','profile_picture', 'password1', 'password2']
