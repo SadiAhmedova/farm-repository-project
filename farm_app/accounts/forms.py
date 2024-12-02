@@ -29,8 +29,9 @@ class CreateProfileForm(auth_forms.UserCreationForm):
             'username': forms.TextInput(attrs={'id':2,'class': 'form-field', 'required': True}),
             'gender': forms.Select(attrs={'id':3, 'class': 'form-field'}),
             'email': forms.EmailInput(attrs={'id':4, 'class': 'form-field'}),
-            'date_of_birth': forms.DateInput(attrs={'id':5, 'class':'form-field', 'type':'date','max':date.today() , 'required': True})
+            'date_of_birth': forms.DateInput(attrs={'id':5, 'class':'form-field', 'type':'date','max': date.today() , 'required': True})
         }
+
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

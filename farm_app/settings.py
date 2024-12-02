@@ -11,6 +11,8 @@ import cloudinary.uploader
 import cloudinary.api
 
 
+
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env('.env')
 
@@ -23,6 +25,10 @@ ALLOWED_HOSTS = ['farm-app-737afdcdcda2.herokuapp.com', 'localhost', '127.0.0.1'
 
 
 CSRF_TRUSTED_ORIGINS = [f'http://{x}:81' for x in ALLOWED_HOSTS]
+
+USE_L10N = False
+DATE_FORMAT = "d.m.Y"
+DATE_INPUT_FORMATS = ["%d.%m.%Y"]
 
 
 SESSION_COOKIE_AGE = 86400
