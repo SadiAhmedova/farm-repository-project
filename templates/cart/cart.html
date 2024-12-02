@@ -24,12 +24,8 @@
                 <div class="total">
                     <span class="Subtotal">Total: </span>
 
-                    <span
-                            class="total-amount"
-                            hx-get="{% url 'cart total' %}"
-                            hx-trigger="update-menu-cart from:body"
-                            hx-swap="innerHTML">
-                    {% include 'cart/cart_total.html' %}
+                    <span class="total-amount">
+                    ${{ cart.get_total_cost}}
                 </span>
                 </div>
                 <a href="{% url 'checkout' %}">
