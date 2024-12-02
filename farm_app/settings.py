@@ -18,6 +18,10 @@ environ.Env.read_env('.env')
 
 SECRET_KEY =  os.getenv('SECRET_KEY', '87$-yv5gv-vszmuj_l8k8vrdd7x91iwmjs^^71janp6$l2o1no')
 
+USE_L10N = False
+DATE_FORMAT = "d.m.Y"
+DATE_INPUT_FORMATS = ["%d.%m.%Y"]
+
 
 DEBUG =  os.getenv('DEBUG', default=False)
 
