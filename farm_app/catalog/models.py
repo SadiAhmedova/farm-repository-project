@@ -219,6 +219,8 @@ class AnimalProduct(models.Model):
         return '{"name": "%s"}' % self.name
 
     def __str__(self):
+        if self.name == "Whole":
+            return f'{self.name} {self.type}'
         return f'{self.name} from {self.type}'
 
     class Meta:
