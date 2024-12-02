@@ -137,3 +137,22 @@ function toggleNavbar() {
         }
     });
 }
+
+    document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll("input[type='date']").forEach(function (input) {
+        input.addEventListener('blur', function () {
+            const [year, month, day] = this.value.split("-");
+            if (year && month && day) {
+                this.value = `${day}.${month}.${year}`;
+            }
+        });
+
+        input.addEventListener('focus', function () {
+            if (this.value.includes(".")) {
+                const [day, month, year] = this.value.split(".");
+                this.value = `${year}-${month}-${day}`;
+            }
+        });
+    });
+});
+
