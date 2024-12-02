@@ -2,10 +2,8 @@ from datetime import date
 
 from django import forms
 from django.contrib.auth import forms as auth_forms
-
 from farm_app.accounts.models import FarmerUser
 
-from farm_app.common.forms import CustomDateInput
 
 
 class CreateProfileForm(auth_forms.UserCreationForm):
@@ -19,7 +17,11 @@ class CreateProfileForm(auth_forms.UserCreationForm):
         widget=forms.PasswordInput(
             attrs={'class': 'form-field', 'type': 'password'}),
     )
-    date_of_birth = forms.DateField(widget=CustomDateInput(attrs={'class': 'form-field', 'id': 5, 'max': date.today(), 'required': True}))
+
+    date_of_birth = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'form-field', 'type': 'date', 'placeholder': 'DD.MM.YYYY'}),
+        input_formats=['%d.%m.%Y']
+    )
 
     class Meta(auth_forms.UserCreationForm.Meta):
         model = FarmerUser
