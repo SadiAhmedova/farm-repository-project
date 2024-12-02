@@ -20,17 +20,13 @@
                             <input id="last_name" name="last_name" class="form-field checkfirld" type="text" value="{% if request.user.last_name %}{{ request.user.last_name }}{% else %}{{ '' }}{% endif %}">
 
                     </div>
+                     <div>
+                        <label for="city">City</label>
+                        <input id="city" name="city" required class="form-field checkfirld" type="text">
+                    </div>
                     <div>
                         <label for="address">Address</label>
                         <input required id="address" name="address" class="form-field checkfirld" type="text">
-                    </div>
-                    <div>
-                        <label for="zipcode">Zip code</label>
-                        <input required id="zipcode" name="zipcode" minlength="4" maxlength="4" class="form-field checkfirld" type="number">
-                    </div>
-                    <div>
-                        <label for="city">City</label>
-                        <input id="city" name="city" required class="form-field checkfirld" type="text">
                     </div>
 
                 </div>

@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
+from farm_app.farm_app.accounts.validators import validate_ten_digits
+
 UserModel = 'accounts.FarmerUser'
 
 
@@ -26,9 +28,8 @@ class Order(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
     address = models.CharField(max_length=100)
-    zipcode = models.IntegerField()
     city = models.CharField(max_length=100)
-    phone = models.IntegerField()
+    phone = models.CharField(max_length=10, validators=[validate_ten_digits], help_text="Enter a valid 10-digit phone number.")
 
     created_at = models.DateTimeField(auto_now_add=True)
 
