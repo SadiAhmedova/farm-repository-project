@@ -87,7 +87,7 @@ class VegetableAndFruit(models.Model):
                             max_length=VegFruitChoice.max_length(),
                             default=VegFruitChoice.OTHER.value)
 
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     production = models.CharField(null=True, blank=True, max_length=MAX_LENGTH_OF_PRODUCTION_COUNTRY,
                                   validators=[validate_only_letter_value])
 
@@ -132,7 +132,7 @@ class DairyProduct(models.Model):
                             max_length=DairyChoice.max_length(),
                             default=DairyChoice.OTHER.value)
     percent = models.FloatField(null=True, blank=True)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='uploads/', blank=True, null=True, validators=(validate_image_size,))
 
     user = models.ForeignKey(
@@ -174,7 +174,7 @@ class AnimalProduct(models.Model):
     name = models.CharField(
         max_length=PRODUCT_MAX_LENGTH, validators=[validate_only_letter_value]
     )
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='uploads/', blank=True, null=True, validators=(validate_image_size,))
     date_of_birth = models.DateField(null=True, blank=True)
 
@@ -237,7 +237,7 @@ class Nut(models.Model):
     name = models.CharField(
         max_length=NUTS_MAX_LENGTH, validators=[validate_only_letter_value]
     )
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='uploads/', blank=True, null=True, validators=(validate_image_size,))
 
     user = models.ForeignKey(

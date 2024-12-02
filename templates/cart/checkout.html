@@ -17,9 +17,8 @@
                     </div>
                     <div>
                         <label for="last_name">Last name</label>
-                        <input id="last_name" name="last_name" class="form-field checkfirld" type="text" value="
+                            <input id="last_name" name="last_name" class="form-field checkfirld" type="text" value="{% if request.user.last_name %}{{ request.user.last_name }}{% else %}{{ '' }}{% endif %}">
 
-             {% if request.user.last_name is None %}{{ '' }}{% else %}{{ request.user.last_name }}{% endif %}">
                     </div>
                     <div>
                         <label for="address">Address</label>
