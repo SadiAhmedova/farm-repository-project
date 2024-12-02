@@ -26,6 +26,9 @@ class CreateProfileForm(auth_forms.UserCreationForm):
             'first_name': forms.TextInput(attrs={'id':0,'class': 'form-field', 'required': True}),
             'last_name': forms.TextInput(attrs={'id':1, 'class': 'form-field', 'required': True}),
             'username': forms.TextInput(attrs={'id':2,'class': 'form-field', 'required': True}),
+            'date_of_birth': forms.DateInput(
+                attrs={'class': 'form-field date-input', 'type': 'date', 'required': True, 'max': date.today()}),
+
             'gender': forms.Select(attrs={'id':3, 'class': 'form-field'}),
             'email': forms.EmailInput(attrs={'id':4, 'class': 'form-field'}),
         }
