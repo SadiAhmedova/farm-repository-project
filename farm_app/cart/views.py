@@ -73,9 +73,9 @@ def update_cart(request, product_id, action, item_type):
                 'id': product.id,
                 'name': str(product),
                 'photo': product.photo,
-                'price': product.formatted_price,
+                'price': product.price,
             },
-            'total_price': (quantity * product.price),
+            'total_price': f'{(quantity * product.price):.2f}',
             'quantity': quantity,
             'item_type': item_type,
         }
