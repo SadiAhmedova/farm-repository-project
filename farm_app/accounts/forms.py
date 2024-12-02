@@ -5,6 +5,7 @@ from django.contrib.auth import forms as auth_forms
 
 from farm_app.accounts.models import FarmerUser
 
+from farm_app.common.forms import CustomDateInput
 
 
 class CreateProfileForm(auth_forms.UserCreationForm):
@@ -18,6 +19,7 @@ class CreateProfileForm(auth_forms.UserCreationForm):
         widget=forms.PasswordInput(
             attrs={'class': 'form-field', 'type': 'password'}),
     )
+    date_of_birth = forms.DateField(widget=CustomDateInput(attrs={'class': 'form-field', 'id': 5, 'max': date.today(), 'required': True}))
 
     class Meta(auth_forms.UserCreationForm.Meta):
         model = FarmerUser
@@ -29,7 +31,6 @@ class CreateProfileForm(auth_forms.UserCreationForm):
             'username': forms.TextInput(attrs={'id':2,'class': 'form-field', 'required': True}),
             'gender': forms.Select(attrs={'id':3, 'class': 'form-field'}),
             'email': forms.EmailInput(attrs={'id':4, 'class': 'form-field'}),
-            'date_of_birth': forms.DateInput(attrs={'id':5, 'class':'form-field', 'type':'date','max': date.today() , 'required': True})
         }
 
 
