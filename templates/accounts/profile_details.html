@@ -116,7 +116,7 @@
                     {% endif %}
 
                     <h1>{{ item.product }}</h1>
-                    <p class="price">${{ item.product.formatted_price}}</p>
+                    <p class="price">${{ item.product.price}}</p>
 
                     {% if request.user.is_authenticated %}
                         {% if request.user.id != item.product.user_id %}
