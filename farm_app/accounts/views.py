@@ -117,7 +117,7 @@ class ProfileDeleteView(views.DeleteView):
         return context
 
     def get_success_url(self):
-        return reverse('profile details', kwargs={'pk': self.request.user.pk})
+        return reverse('home')
 
 def error_404_view(request, exception):
     return render(request, 'main/404page.html')
