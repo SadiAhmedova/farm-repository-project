@@ -219,9 +219,9 @@ class AnimalProduct(models.Model):
         return '{"name": "%s"}' % self.name
 
     def __str__(self):
-        if self.name == "Whole":
+        if self.name == "Whole" or self.name == "whole":
             return f'{self.name} {self.type}'
-        return f'{self.name} from {self.type}'
+        return f'{self.type} {self.name}'
 
     class Meta:
         ordering = ['-price']

@@ -96,7 +96,7 @@ def update_cart(request, product_id, action, item_type):
 
 
 @login_required(login_url='/login/')
-def delete_item(request, item_type, product_id):
+def delete_item(request, product_id):
     current_cart = Cart(request)
     current_cart.remove(product_id)
 
