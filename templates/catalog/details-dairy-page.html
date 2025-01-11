@@ -53,16 +53,13 @@
             </div>
             {% if request.user.is_authenticated %}
                 {% if request.user.id != dairy.user_id %}
-                    <button
-                            class="buy-button cust-button animal-add"
-                            id="add-to-cart-DairyProduct-{{ dairy.id }}"
-                            onclick="addToCart('DairyProduct',{{ dairy.id }})"
-                            hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"
-                            hx-target="#menu-cart-button"
-                            hx-swap="outerHTML"
-                    >
-                        Add to cart
-                    </button>
+                <button id="add-to-cart-DairyProduct-{{ dairy.pk }}" onclick="addToCart('DairyProduct',{{ dairy.pk }})"
+                    hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+                >
+                    Add to cart
+                </button>
                 {% else %}
                     <div class="btns">
 

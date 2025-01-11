@@ -53,12 +53,16 @@
             </div>
             {% if  request.user.is_authenticated %}
                 {% if plant.user_id != request.user.pk %}
-                    <button id="add-to-cart-VegetableAndFruit-{{ plant.id }}" onclick="addToCart('VegetableAndFruit',{{ plant.id }})"
-                            class="buy-button cust-button animal-add"
-                            hx-get="{% url 'add to cart' item_type='VegetableAndFruit' product_id=plant.id %}"
-                            hx-target="#menu-cart-button"
-                            hx-swap="outerHTML">
+                    <button id="add-to-cart-VegetableAndFruit-{{ plant.pk }}"
+                        onclick="addToCart('VegetableAndFruit', {{ plant.pk }})">
+                    <a
+                        hx-trigger="click"
+                        hx-get="{% url 'add to cart' item_type='VegetableAndFruit' product_id=plant.id %}"
+                        hx-target="#menu-cart-button"
+                        hx-swap="outerHTML"
+                    >
                         Add to cart
+                    </a>
                     </button>
                 {% else %}
                     <a class="cust-button editBtn" href="{% url 'edit vegetable' plant.pk %}">Edit</a>
