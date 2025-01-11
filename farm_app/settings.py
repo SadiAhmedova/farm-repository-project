@@ -10,9 +10,6 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env('.env')
 

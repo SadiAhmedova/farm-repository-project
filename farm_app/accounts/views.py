@@ -43,11 +43,8 @@ class ProfileRegisterView(views.CreateView):
         return result
 
 
-
-
 class ProfileLogoutView(auth_views.LogoutView):
     pass
-
 
 class ProfileDetailsView(views.DetailView):
     model = FarmerUser
