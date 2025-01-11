@@ -1,5 +1,5 @@
 var addToCartUrl = "cart/add/''/0/";
-var deleteItemUrl = "delete/''/0/";
+var deleteItemUrl = "{% url 'delete item' 'item_type_placeholder' 'product_id_placeholder' %}";
 
 
 function addToCart(item_type, productId) {
@@ -31,7 +31,7 @@ function deleteCartItem(item_type, productId) {
     let confirmation = confirm("Are you sure you want to delete this item from the cart?");
 
     if (confirmation === true) {
-        fetch(deleteItemUrl.replace("''", item_type).replace("0", productId), {
+        fetch(deleteItemUrl.replace('item_type_placeholder', item_type).replace('product_id_placeholder', productId), {
             method: 'POST',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest',

@@ -7,6 +7,8 @@ from django.urls import reverse
 
 from farm_app.cart.cart import Cart
 from json import JSONEncoder
+import logging
+logger = logging.getLogger(__name__)
 
 
 def _default(self, obj):
@@ -96,7 +98,8 @@ def update_cart(request, product_id, action, item_type):
 
 
 @login_required(login_url='/login/')
-def delete_item(request, product_id):
+def delete_item(request,item_type, product_id):
+    logger.info(f"Deleting item: {item_type}, {product_id}")
     current_cart = Cart(request)
     current_cart.remove(product_id)
 
