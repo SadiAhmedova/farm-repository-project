@@ -1,5 +1,5 @@
 var addToCartUrl = "cart/add/''/0/";
-var deleteItemUrl = "delete/''/0/"
+var deleteItemUrl = "delete/''/0/";
 
 
 function addToCart(item_type, productId) {
