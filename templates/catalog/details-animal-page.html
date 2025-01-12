@@ -59,17 +59,16 @@
             </div>
             {% if  request.user.is_authenticated %}
                 {% if meat.user_id != request.user.pk %}
-            <button id="add-to-cart-AnimalProduct-{{ meat.id }}"
-                onclick="addToCart('AnimalProduct', {{ meat.id }})">
-            <a
-                    hx-trigger="click"
-                    hx-get="{% url 'add to cart' item_type='AnimalProduct' product_id=meat.id %}"
-                    hx-target="#menu-cart-button"
-                    hx-swap="outerHTML"
-            >
-                Add to cart
-            </a>
-        </button>
+                    <button
+                            class="buy-button cust-button animal-add"
+                            id="add-to-cart-AnimalProduct-{{ meat.id }}"
+                            onclick="addToCart('DairyProduct',{{ meat.id }})"
+                            hx-get="{% url 'add to cart' item_type='AnimalProduct' product_id=meat.id %}"
+                            hx-target="#menu-cart-button"
+                            hx-swap="outerHTML"
+                    >
+                        Add to cart
+                    </button>
                 {% else %}
 
                     <div class="btns">

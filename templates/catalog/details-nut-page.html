@@ -51,13 +51,14 @@
             {% if  request.user.is_authenticated %}
                 {% if nut.user_id != request.user.pk %}
 
-                <button id="add-to-cart-Nut-{{ nut.pk }}" onclick="addToCart('Nut',{{ nut.pk }})"
-                    hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"
-                    hx-target="#menu-cart-button"
-                    hx-swap="outerHTML"
-                >
-                    Add to cart
-                </button>
+                        <button id="add-to-cart-Nut-{{ nut.id }}" onclick="addToCart('Nut',{{ nut.id }})"
+                                class="buy-button cust-button animal-add"
+                                hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"
+                                hx-target="#menu-cart-button"
+                                hx-swap="outerHTML">
+                            Add to cart
+                        </button>
+
                 {% else %}
                     <div class="btns ">
 
