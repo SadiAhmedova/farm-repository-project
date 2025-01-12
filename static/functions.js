@@ -13,6 +13,7 @@ function addToCart(item_type, productId) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                document.getElementById('menu-cart-button').innerHTML = data.cart_html;
                 let text = "Successfully added a product to the cart!\nGo see your cart.";
                 document.getElementById('menu-cart').innerHTML = data.cart_html;
                 if (confirm(text) === true) {
