@@ -11,75 +11,48 @@
 </head>
 
 <body>
+<div>
+<header class="header">
+<div class="navbar-container">
+  <div class="logo">Farm Shop</div>
+  
+  <form action="{% url 'product search' %}" method="get" class="search-bar">
+    <input type="text" name="q" placeholder="Search products..." />
+    <button type="submit">Search</button>
+  </form>
 
+  <nav class="navbar-links">
+    <a href="{% url 'about us' %}" class="nav-item">About Us</a>
 
-<div class="navbar">
-
-    <ul class="navbar-list" id="navbar-list">
-        <li class=" left-item navitem activebtn "><a href="{% url 'home' %}">Farm</a></li>
-
-        {% if request.user.is_authenticated %}
-            <li class="left-item navitem" ><a href="{% url 'add vegetable' %}">Add Vegetable and Fruit</a></li>
-            <li class="left-item navitem"><a href="{% url 'add animal' %}">Add Animal Product</a></li>
-            <li class="left-item navitem"><a href="{% url 'add dairy' %}">Add Dairy Product</a></li>
-            <li class="left-item navitem last-nav"><a href="{% url 'add nut' %}">Add Nut</a></li>
-            <li class="right-item navitem last-nav">
-                <a class="nav-link " href="{% url 'profile details' pk=request.user.pk %}">Profile</a>
-            </li>
-            <li class="right-item navitem menu-cart"
-                id="menu-cart"
-                hx-get="{% url 'menu cart' %}"
-                hx-trigger="update-menu-cart from:body"
-                hx-swap="innerHTML"
-            >
-                {% include 'cart/menu_cart.html' %}
-            </li>
-            <li class="right-item navitem">
-                <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
-            </li>
-        {% else %}
-            {% if current_page == 'home' %}
-
-                <li  class="left-item navitem"><a href="#" onclick="filterSelection('vegetables')">Vegetables and
-                    Fruits</a></li>
-                <li class="left-item navitem"><a href="#" onclick="filterSelection('animals')">Animal Products</a></li>
-                <li class="left-item navitem"><a href="#" onclick="filterSelection('dairies')">Dairy Products</a></li>
-                <li class="left-item navitem last-nav"><a href="#" onclick="filterSelection('nuts')">Nut Products</a>
-                </li>
-            {% endif %}
-
-            <li class="right-item navitem last-nav">
-                <a class="nav-link" href="{% url "login" %}">Log In</a>
-            </li>
-            <li class="right-item navitem ">
-                <a class="nav-link" href="{% url "register" %}">Register</a>
-            </li>
-        {% endif %}
-    </ul>
-
-    <p class="menu-icon" onclick="toggleNavbar()">
-        &#9776;
-    </p>
+    {% if request.user.is_authenticated %}
+      <a href="{% url 'cart' %}" class="basket-btn">Basket ({{ cart|length }})</a>
+        
+      <div class="profile-dropdown">
+        <button class="profile-btn">Profile</button>
+        <div class="dropdown-content">
+          <a href="{% url 'profile details' pk=request.user.pk %}">Profile Details</a>
+          <a href="{% url 'my orders' %}">Order History</a>
+          <a href="{% url 'logout' %}">Log Out</a>
+        </div>
+      </div>
+    {% else %}
+      <a href="{% url 'login' %}" class="nav-item">Log In</a>
+      <a href="{% url 'register' %}" class="nav-item">Register</a>
+    {% endif %}
+  </nav>
 </div>
-
-<div class="main">
-
+</header>
+    
     {% block page_content %}
 
     {% endblock %}
+
 </div>
 
-<div id="footer">
-    © 2023, June:
-    <img alt="Icon" src="{% static 'images/favicon.ico' %}">
-    Farm, Sadi's project
-</div>
+
 
 <script src="https://unpkg.com/htmx.org@1.9.4"></script>
-
-
 </body>
-
 </html>
 
 

@@ -1,10 +1,6 @@
-from itertools import count
-
 from _decimal import Decimal
 from django.apps import apps
 from django.conf import settings
-from django.core import serializers
-from django.shortcuts import render
 
 
 class Cart(object):

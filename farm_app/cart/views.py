@@ -86,6 +86,7 @@ def update_cart(request, product_id, action, item_type):
 
     context = {
         'item': item,
+        'item_name': str(item),
         'total_cart_price': current_cart.get_total_cost,
         'success': True,
         'cart_html': render_to_string('cart/menu_cart.html', {'cart': cart}),

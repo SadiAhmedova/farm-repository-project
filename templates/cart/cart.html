@@ -1,41 +1,29 @@
 {% extends 'main/base.html' %}
 {% load static %}
-{% block title %} My cart {% endblock %}
+{% block title %} Basket {% endblock %}
 {% block page_content %}
-    <div class="whole-page">
-        <div class="header-orders">
-            <div class="head-ord"><b>Shopping cart</b></div>
-
-            <div id="cart-length-text" class="count-orders">
-                {{ total_items }} items
-            </div>
+    <main>
+    <section class="product-card">
+      <img src="https://via.placeholder.com/160x160" alt="Heirloom tomato" />
+      <div class="details">
+        <h2>Heirloom tomato</h2>
+        <p class="price">$5.99 / lb</p>
+        <div class="quantity">
+          <span>1 lb</span>
+          <img src="https://via.placeholder.com/16x16" alt="Edit quantity" />
         </div>
+      </div>
+      <div class="subtotal">$5.99</div>
+    </section>
 
-        <div class="orders-window">
+  </main>
 
-            {% for item in cart %}
-                {% include 'cart/cart_item.html' %}
-            {% endfor %}
-            <hr>
-        </div>
-
-        {% if total_items != 0 %}
-            <div class="checkout">
-                <div class="total">
-                    <span class="Subtotal">Total: </span>
-
-                    <span class="total-amount">
-                    ${{ cart.get_total_cost}}
-                </span>
-                </div>
-                <a href="{% url 'checkout' %}">
-                    <button class="cust-button checkoutbtn">Checkout</button>
-                </a>
-            </div>
-        {% endif %}
-
-    </div>
-
-
-
-{% endblock %}
+  <aside class="summary">
+    <h3>Order Summary</h3>
+    <p>Subtotal: $27.44</p>
+    <p>Shipping: $3.99</p>
+    <p>Tax: $2.00</p>
+    <strong>Total: $33.43</strong>
+    <button class="btn payment">Continue to Payment</button>
+  </aside>
+    {% endblock %}
