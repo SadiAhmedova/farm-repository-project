@@ -31,7 +31,7 @@
         <button class="profile-btn">Profile</button>
         <div class="dropdown-content">
           <a href="{% url 'profile details' pk=request.user.pk %}">Profile Details</a>
-          <a href="{% url 'my orders' %}">Order History</a>
+          <a href="{% url 'my orders' pk=request.user.pk %}">Order History</a>
           <a href="{% url 'logout' %}">Log Out</a>
         </div>
       </div>
