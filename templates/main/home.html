@@ -10,11 +10,11 @@
 {% endblock %}
 
 {% block page_content %}
-    <main>
+
     <div class="header-container">
-        <div class="header-title">Basket</div>
+        <div class="header-title">Products</div>
+        <div class="header-separator"></div>
     </div>
-    </main>
             {% for vegetable in veg_fruit %}
                 {% include 'main/vegetable-card.html' %}
             {% endfor %}

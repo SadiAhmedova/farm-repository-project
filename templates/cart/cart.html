@@ -6,29 +6,41 @@
         <div class="header-container">
             <div class="header-detail">{{ cart|length }} items</div>
             <div class="header-title">Basket</div>
+            <div class="header-separator"></div>
             </div>
+    
+    {% if cart|length <= 0  %}
+        <div class="header">You have no products in your basket<br><br> 
+        <a href="{% url 'checkout' %}">
+            <div style="width: 347px; height: 48px; left: 24px; top: 246px; position: absolute; background: #426B1F; border-radius: 8px; overflow: hidden">
+                <div class="payment-btn">Go to the shop</div>
+                <div style="width: 32px; height: 32px; left: 299px; top: 8px; position: absolute">
+                    <div style="width: 16px; height: 12px; left: 8px; top: 10px; position: absolute; border: 1px white solid"></div>
+                </div>
+            </div>
+        </a>
+        </div>
+    
+    {% else %}
     
     {% for item in cart %}
         {% include 'cart/cart_item.html' %}
     {% endfor %}
     
-    <strong>Total: ${{ cart.get_total_cost}}</strong>
-        
-        <a href="{% url 'checkout' %}">
-            <button class="btn payment">Continue to Payment</button>
-        </a>
-    
     <div class="summary-container">
   <div class="summary-title">Order summary</div>
 <div class="total-title">Total</div>
-  <div class="summary-total-price">$33.43</div>
+  <div class="summary-total-price">${{ cart.get_total_cost  }}</div>
+  <a href="{% url 'checkout' %}">
   <div style="width: 347px; height: 48px; left: 24px; top: 246px; position: absolute; background: #426B1F; border-radius: 8px; overflow: hidden">
     <div class="payment-btn">Continue to payment</div>
     <div style="width: 32px; height: 32px; left: 299px; top: 8px; position: absolute">
       <div style="width: 16px; height: 12px; left: 8px; top: 10px; position: absolute; border: 1px white solid"></div>
     </div>
   </div>
+  </a>
 </div>
+    {% endif %}
     
     
 
