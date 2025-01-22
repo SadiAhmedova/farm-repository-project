@@ -1,7 +1,7 @@
 {% load static %}
 <div class="card-container">
   <div class="card-name">{{ animal }}</div>
-  <div class="card-price">${{ animal.price }} / kg</div>
+  <div class="card-price">${{ animal.price }}/kg</div>
   <div class="card-country">Raised in {{ animal.production }}</div>
       <a href="{% url 'details animal' animal.pk %}">
         {% if animal.photo %}

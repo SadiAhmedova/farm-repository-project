@@ -1,7 +1,8 @@
 {% load static %}
 <div class="card-container">
   <div class="card-name">{{ vegetable }}</div>
-  <div class="card-price">${{ vegetable.price }} / kg</div>
+  <div class="card-price">${{ vegetable.price }}/kg</div>
+  <div class="card-country">Grown in {{ vegetable.production }}</div>
       <a href="{% url 'details vegetable' vegetable.pk %}">
         {% if vegetable.photo %}
             <img class="card-img" src="{{ vegetable.photo.url }}" alt="vegetable or fruit photo">
