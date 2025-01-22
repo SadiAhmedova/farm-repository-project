@@ -157,3 +157,97 @@ body {
 .basket-btn:hover {
   background: #365a14;
 }
+
+
+
+/*CARDS*/
+.card-container {
+  width: 395px;
+  height: 444px;
+  position: relative;
+  background: #FAFAF5;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px #E6E6E6 solid;
+}
+
+.card-name {
+  left: 24px;
+  top: 320px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 26px;
+  word-wrap: break-word;
+}
+.card-price {
+  left: 24px;
+  top: 350px;
+  position: absolute;
+  color: #426B1F;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 26px;
+  word-wrap: break-word;
+}
+.card-country {
+  left: 24px;
+  top: 392px;
+  position: absolute;
+  color: #6D6D6D;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+.card-img {
+  width: 395px;
+  height: 296px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+/*HEADER*/
+.header-container{
+  width: 1440px;
+  height: 149px;
+  position: relative;
+  background: white;
+}
+
+.header-title{
+  left: 96px;
+  top: 56px;
+  position: absolute;
+  color: black;
+  font-size: 64px;
+  font-family: Newsreader;
+  font-weight: 400;
+  line-height: 76.80px;
+  word-wrap: break-word;
+}
+.header-separator{
+  width: 1248px;
+  height: 0px;
+  left: 96px;
+  top: 149px;
+  position: absolute;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: 2px #E6E6E6 solid;
+}
+.header-detail{
+  left: 301px;
+  top: 90px;
+  position: absolute;
+  color: black;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 300;
+  line-height: 26px;
+  word-wrap: break-word;
+}

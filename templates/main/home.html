@@ -10,26 +10,12 @@
 {% endblock %}
 
 {% block page_content %}
-
-        <div class="catalog">
-
-        {% if not request.user.is_authenticated %}
-            <div class="welcome">
-                    <div class="login-item item2">
-                        <h1 class="big-text">Welcome To Our Farm Shop!</h1>
-                        <p class="welcome-text"><a
-                                href="{% url 'register' %}">Sign Up</a>/<a href="{% url 'login' %}">Sign In!</a></p>
-                    </div>
-
-                    <div class="login-item item1">
-                        <img alt="Login photo" src="{% static 'images/undraw_welcome_re_h3d9.svg' %}">
-                    </div>
-            </div>
-        {% endif %}
-
-        <div class="all-products">
-
-
+    <main>
+    <div class="header-container">
+        <div class="header-title">Basket</div>
+        <div class="header-separator"></div>
+    </div>
+    </main>
             {% for vegetable in veg_fruit %}
                 {% include 'main/vegetable-card.html' %}
             {% endfor %}
@@ -45,10 +31,6 @@
             {% for nut in nuts %}
                 {% include 'main/nut-card.html' %}
             {% endfor %}
-        </div>
-        </div>
-
-
 
 {% endblock %}
 

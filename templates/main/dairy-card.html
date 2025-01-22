@@ -1,23 +1,26 @@
 {% load static %}
-
-<div class="show card dairies filterDiv">
-    <a href="{% url 'details dairy' dairy.pk %}">
+<div class="card-container">
+  <div class="card-name">{{ dairy }}</div>
+  <div class="card-price">${{ dairy.price }} / kg</div>
+  <div class="card-country">{{ dairy.percent }}% fat</div>
+      <a href="{% url 'details dairy' dairy.pk %}">
         {% if dairy.photo %}
-            <img class="product-card-image" src="{{ dairy.photo.url }}" alt="post">
+            <img class="card-img" src="{{ dairy.photo.url }}" alt="dairy photo">
         {% else %}
-            <img class="product-card-image" src="{% static 'images/milk-products.jpg' %}" alt="post">
+            <img class="card-img" src="{% static 'images/milk-products.jpg' %}" alt="dairy photo">
         {% endif %}
     </a>
-    <h1>{{ dairy }}</h1>
-    <p class="price">${{ dairy.price }}</p>
 
     {% if request.user.is_authenticated and request.user.id != dairy.user_id %}
-        <button id="add-to-cart-DairyProduct-{{ dairy.pk }}" onclick="addToCart('DairyProduct',{{ dairy.pk }})"
-                hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"
-                hx-target="#menu-cart-button"
-                hx-swap="outerHTML"
-        >
-            Add to cart
+        <button class="btn" id="add-to-cart-DairyProduct-{{ dairy.pk }}"
+                onclick="addToCart('DairyProduct',{{ dairy.pk }})">
+            <a
+                    hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+            >
+                Buy 1 kg/l
+            </a>
         </button>
     {% endif %}
 </div>

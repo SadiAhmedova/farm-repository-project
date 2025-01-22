@@ -1,4 +1,30 @@
 {% load static %}
+<div class="card-container">
+  <div class="card-name">{{ nut }}</div>
+  <div class="card-price">${{ nut.price }} / kg</div>
+      <a href="{% url 'details nut' nut.pk %}">
+        {% if nut.photo %}
+            <img class="card-img" src="{{ nut.photo.url }}" alt="nut photo">
+        {% else %}
+            <img class="card-img" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
+        {% endif %}
+    </a>
+    {% if request.user.is_authenticated and request.user.id != nut.user_id %}
+        <button class="btn" id="add-to-cart-Nut-{{ nut.pk }}"
+                onclick="addToCart('Nut',{{ nut.pk }})">
+            <a
+                    hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"
+                    hx-target="#menu-cart-button"
+                    hx-swap="outerHTML"
+            >
+                Buy 1 kg
+            </a>
+        </button>
+    {% endif %}
+</div>
+
+
+
 
 <div class="show card nuts filterDiv">
     <a href="{% url 'details nut' nut.pk %}">
