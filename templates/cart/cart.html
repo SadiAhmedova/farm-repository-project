@@ -3,18 +3,11 @@
 {% block title %} Basket {% endblock %}
 {% block page_content %}
     <main>
-    <section class="product-card">
-      <img src="https://via.placeholder.com/160x160" alt="Heirloom tomato" />
-      <div class="details">
-        <h2>Heirloom tomato</h2>
-        <p class="price">$5.99 / lb</p>
-        <div class="quantity">
-          <span>1 lb</span>
-          <img src="https://via.placeholder.com/16x16" alt="Edit quantity" />
-        </div>
-      </div>
-      <div class="subtotal">$5.99</div>
-    </section>
+    
+    {% for item in cart %}
+        {% include 'cart/cart_item.html' %}
+    {% endfor %}
+
 
   </main>
 

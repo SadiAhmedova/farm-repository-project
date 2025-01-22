@@ -117,10 +117,5 @@ def delete_item(request,item_type, product_id):
 def checkout(request):
     return render(request, 'cart/checkout.html')
 
-
-def menu_cart(request):
-    return render(request, 'cart/menu_cart.html')
-
-
 def cart_total(request):
     return render(request, 'cart/cart_total.html')
