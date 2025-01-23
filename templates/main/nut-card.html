@@ -12,11 +12,11 @@
     {% if request.user.is_authenticated and request.user.id != nut.user_id %}
                 <button 
             class="card-btn" 
-            id="add-to-cart-AnimalProduct-{{ animal.pk }}"
-            hx-get="{% url 'add to cart' item_type='AnimalProduct' product_id=animal.id %}"
+            id="add-to-cart-Nut-{{ nut.pk }}"
+            hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"
             hx-target="#menu-cart-button"   
             hx-swap="outerHTML"
-            onclick="addToCart('AnimalProduct',{{ animal.pk }})"
+            onclick="addToCart('Nut',{{ nut.pk }})"
         >
             <img src="{% static 'images/shopping-trolley.png' %}" alt="Add to cart">
         </button>

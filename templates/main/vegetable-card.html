@@ -14,11 +14,11 @@
     {% if request.user.is_authenticated and request.user.id != vegetable.user_id %}
                 <button 
             class="card-btn" 
-            id="add-to-cart-AnimalProduct-{{ animal.pk }}"
-            hx-get="{% url 'add to cart' item_type='AnimalProduct' product_id=animal.id %}"
+            id="add-to-cart-VegetableAndFruit-{{ vegetable.pk }}"
+            hx-get="{% url 'add to cart' item_type='VegetableAndFruit' product_id=vegetable.id %}"
             hx-target="#menu-cart-button"   
             hx-swap="outerHTML"
-            onclick="addToCart('AnimalProduct',{{ animal.pk }})"
+            onclick="addToCart('VegetableAndFruit',{{ vegetable.pk }})"
         >
             <img src="{% static 'images/shopping-trolley.png' %}" alt="Add to cart">
         </button>
