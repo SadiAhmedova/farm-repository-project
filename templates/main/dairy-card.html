@@ -1,6 +1,6 @@
 {% load static %}
 <div class="card-container">
-  <div class="card-name">{{ dairy }}</div>
+  <div class="card-name">{{ dairy.name }}</div>
   <div class="card-price">${{ dairy.price }}/kg</div>
   <div class="card-country">{{ dairy.percent }}% fat</div>
       <a href="{% url 'details dairy' dairy.pk %}">
@@ -12,7 +12,7 @@
     </a>
 
     {% if request.user.is_authenticated and request.user.id != dairy.user_id %}
-        <button class="btn" id="add-to-cart-DairyProduct-{{ dairy.pk }}"
+        <button class="card-btn" id="add-to-cart-DairyProduct-{{ dairy.pk }}"
                 onclick="addToCart('DairyProduct',{{ dairy.pk }})">
             <a
                     hx-get="{% url 'add to cart' item_type='DairyProduct' product_id=dairy.id %}"

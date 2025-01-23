@@ -10,7 +10,7 @@
         {% endif %}
     </a>
     {% if request.user.is_authenticated and request.user.id != nut.user_id %}
-        <button class="btn" id="add-to-cart-Nut-{{ nut.pk }}"
+        <button class="card-btn" id="add-to-cart-Nut-{{ nut.pk }}"
                 onclick="addToCart('Nut',{{ nut.pk }})">
             <a
                     hx-get="{% url 'add to cart' item_type='Nut' product_id=nut.id %}"

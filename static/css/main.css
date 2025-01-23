@@ -174,7 +174,7 @@ body,html {
   width: 395px;
   height: 444px;
   position: relative;
-  background: var(--background-color);
+  background: #ebebe2;
   border-radius: 24px;
   overflow: hidden;
   border: 2px #E6E6E6 solid;
@@ -192,6 +192,20 @@ body,html {
   line-height: 26px;
   word-wrap: break-word;
 }
+.card-btn{
+  left: 24px;
+  top: 400px;
+  width: 80%;
+  height: auto;
+  position: absolute;
+  color: #fefef5;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 26px;
+  word-wrap: break-word;
+  background-color: var(--primary-color);
+}
 .card-price {
   left: 24px;
   top: 350px;
@@ -205,7 +219,7 @@ body,html {
 }
 .card-country {
   left: 24px;
-  top: 392px;
+  top: 380px;
   position: absolute;
   color: #6D6D6D;
   font-size: 16px;
