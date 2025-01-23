@@ -1,3 +1,8 @@
+:root {
+  --primary-color: #426B1F;
+  --background-color: #FAFAF5;
+  --secondary-color: #365a14;
+}
 * {
     box-sizing: border-box;
 }
@@ -6,7 +11,7 @@ body {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
-  background: #FAFAF5;
+  background: var(--background-color);
 }
 
 .header {
@@ -14,13 +19,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background: #FAFAF5;
+  background: var(--background-color);
 }
 
 .logo {
   font-family: 'Newsreader', serif;
   font-size: 32px;
-  color: #426b1f;
+  color: var(--primary-color);
 }
 
 .nav a {
@@ -30,8 +35,8 @@ body {
 }
 
 .btn {
-  background: #426b1f;
-  color: #FAFAF5;
+  background: var(--primary-color);
+  color: var(--background-color);
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
@@ -47,12 +52,12 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  background-color: #FAFAF5;
+  background-color: var(--background-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
-  color: #426B1F;
+  color: var(--primary-color);
   font-size: 32px;
   font-family: 'Newsreader', serif;
   font-weight: 500;
@@ -68,7 +73,7 @@ body {
 
 .search-bar input {
   padding: 8px;
-  border: 1px solid #FAFAF5;
+  border: 1px solid var(--background-color);
   border-radius: 4px;
   font-size: 14px;
   width: 200px;
@@ -76,8 +81,8 @@ body {
 
 .search-bar button {
   padding: 8px 16px;
-  background: #426B1F;
-  color: #FAFAF5;
+  background: var(--primary-color);
+  color: var(--background-color);
   border: none;
   border-radius: 4px;
   font-size: 14px;
@@ -102,7 +107,7 @@ body {
 }
 
 .nav-item:hover {
-  color: #426B1F;
+  color: var(--primary-color);
 }
 
 .profile-dropdown {
@@ -118,13 +123,13 @@ body {
 }
 
 .profile-btn:hover {
-  color: #426B1F;
+  color: var(--primary-color);
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #FAFAF5;
+  background-color: var(--background-color);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   right: 0;
@@ -142,13 +147,13 @@ body {
 }
 
 .dropdown-content a:hover {
-  background-color: #FAFAF5;
-  color: #426B1F;
+  background-color: var(--background-color);
+  color: var(--primary-color);
 }
 
 .basket-btn {
-  background: #426B1F;
-  color: #FAFAF5;
+  background: var(--primary-color);
+  color: var(--background-color);
   padding: 10px 20px;
   border-radius: 4px;
   text-decoration: none;
@@ -165,7 +170,7 @@ body {
   width: 395px;
   height: 444px;
   position: relative;
-  background: #FAFAF5;
+  background: var(--background-color);
   border-radius: 24px;
   overflow: hidden;
   border: 2px #E6E6E6 solid;
@@ -186,7 +191,7 @@ body {
   left: 24px;
   top: 350px;
   position: absolute;
-  color: #426B1F;
+  color: var(--primary-color);
   font-size: 20px;
   font-family: Inter;
   font-weight: 600;
@@ -217,7 +222,7 @@ body {
   width: 1440px;
   height: 149px;
   position: relative;
-  background: #fafaf5;
+  background: var(--background-color);
   margin-bottom: 20px;
 }
 
@@ -235,11 +240,11 @@ body {
 .header-separator{
   width: 1248px;
   height: 0px;
-  left: 96px;
+  left: 50px;
   top: 149px;
   position: absolute;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border: 2px #E6E6E6 solid;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border: 1px #E6E6E6 solid;
 }
 .header-detail{
   left: 301px;

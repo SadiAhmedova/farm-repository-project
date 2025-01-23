@@ -8,9 +8,9 @@
             <div class="header-title">Basket</div>
             <div class="header-separator"></div>
             </div>
-    
+
     {% if cart|length <= 0  %}
-        <div class="header">You have no products in your basket<br><br> 
+        <div class="header">You have no products in your basket<br><br>
         <a href="{% url 'checkout' %}">
             <div style="width: 347px; height: 48px; left: 24px; top: 246px; position: absolute; background: #426B1F; border-radius: 8px; overflow: hidden">
                 <div class="payment-btn">Go to the shop</div>
@@ -20,13 +20,13 @@
             </div>
         </a>
         </div>
-    
+
     {% else %}
-    
+
     {% for item in cart %}
         {% include 'cart/cart_item.html' %}
     {% endfor %}
-    
+
     <div class="summary-container">
   <div class="summary-title">Order summary</div>
 <div class="total-title">Total</div>
@@ -41,8 +41,8 @@
   </a>
 </div>
     {% endif %}
-    
-    
+
+
 
 
   </main>
