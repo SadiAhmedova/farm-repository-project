@@ -7,19 +7,14 @@
     box-sizing: border-box;
 }
 
-body {
+body,html {
   font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
   background: var(--background-color);
+  overflow: visible;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--background-color);
-}
 
 .logo {
   font-family: 'Newsreader', serif;
@@ -42,7 +37,8 @@ body {
 }
 
 .navbar-container {
-  width: 1440px;
+  width: 100%;
+  margin: 0 auto;
   height: 112px;
   position: sticky;
   top: 0;
@@ -168,7 +164,7 @@ body {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  align-content: space-around;
+  align-content: space-between;
 }
 
 
