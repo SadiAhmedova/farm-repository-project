@@ -25,17 +25,19 @@ class IndexView(views.ListView):
         return list(chain(veg_fruit, nuts, animal_products, dairies))
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        current_page = resolve(self.request.path_info).url_name
+            context = super().get_context_data(**kwargs)
+            current_page = resolve(self.request.path_info).url_name
+            count_all_products = FarmerUser.objects.all().count() + DairyProduct.objects.all().count() + Nut.objects.all().count() + AnimalProduct.objects.all().count()
 
-        context['users'] = FarmerUser.objects.all()
-        context['veg_fruit'] = VegetableAndFruit.objects.all()
-        context['dairies'] = DairyProduct.objects.all()
-        context['nuts'] = Nut.objects.all()
-        context['animal_products'] = AnimalProduct.objects.all()
-        context['current_page'] = current_page
+            context['count_all_products'] = count_all_products
+            context['users'] = FarmerUser.objects.all()
+            context['veg_fruit'] = VegetableAndFruit.objects.all()
+            context['dairies'] = DairyProduct.objects.all()
+            context['nuts'] = Nut.objects.all()
+            context['animal_products'] = AnimalProduct.objects.all()
+            context['current_page'] = current_page
 
-        return context
+            return context
 
 
 class VegetableCreateView(views.CreateView):
