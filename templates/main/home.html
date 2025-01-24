@@ -36,9 +36,13 @@
     </div>
 
     <div>
-<h3>Recently Viewed</h3>
+    <div class="header-container">
+        <div class="header-title">Recently Viewed</div>
+        <div class="header-separator"></div>
+    </div>
 {% for item in recently_viewed %}
-    <div class="card-container">
+    <div class="products-container">
+    <div class="card-container" style="height: 350px;">
         <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
             {% if item.photo %}
@@ -54,7 +58,7 @@
         {% endif %}
         {% elif item.type == 'DairyProduct' %}
             {% if item.photo %}
-            <img class="card-img" src="{{ item.photo.url }}" alt="dairy photo">
+            <img class="card-img" src="{{ item.photo }}" alt="dairy photo">
         {% else %}
             <img class="card-img" src="{% static 'images/milk-products.jpg' %}" alt="dairy photo">
         {% endif %}
@@ -67,6 +71,7 @@
         {% endif %}
     </div>
 {% endfor %}
+        </div>
 </div>
 
 
