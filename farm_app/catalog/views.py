@@ -93,7 +93,6 @@ class VegetableDetailsView(views.DetailView, RecentlyViewedMixin):
     model = VegetableAndFruit
     context_object_name = 'plant'
     template_name = 'catalog/details-vegetable-page.html'
-    photo = static('images/fruit-and-veg.jpg')
     model_name = object.__class__.__name__
 
     def get_profile(self):
@@ -101,9 +100,9 @@ class VegetableDetailsView(views.DetailView, RecentlyViewedMixin):
         return profile
 
     def get_photo(self):
-        if self.object.photo is not None:
+        if self.object.photo:
             return self.object.photo.url
-        return self.photo
+        return static('images/fruit-and-veg.jpg')
 
     def get_context_data(self, **kwargs):
         self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.name, self.get_photo())
@@ -172,7 +171,6 @@ class NutDetailsView(views.DetailView, RecentlyViewedMixin):
     model = Nut
     context_object_name = 'nut'
     template_name = 'catalog/details-nut-page.html'
-    photo = static('images/nuts-and-dry-fruits.jpg')
     model_name = object.__class__.__name__
 
     def get_profile(self):
@@ -180,9 +178,9 @@ class NutDetailsView(views.DetailView, RecentlyViewedMixin):
         return profile
 
     def get_photo(self):
-        if self.object.photo is not None:
+        if self.object.photo:
             return self.object.photo.url
-        return self.photo
+        return static('images/nuts-and-dry-fruits.jpg')
 
     def get_context_data(self, **kwargs):
         self.add_to_recently_viewed(self.object.id, 'Nut', self.object.name, self.get_photo())
@@ -250,7 +248,7 @@ class DairyDetailsView(views.DetailView, RecentlyViewedMixin):
     model = DairyProduct
     context_object_name = 'dairy'
     template_name = 'catalog/details-dairy-page.html'
-    photo = static('images/milk-products.jpg')
+
     model_name = object.__class__.__name__
 
     def get_profile(self):
@@ -258,9 +256,9 @@ class DairyDetailsView(views.DetailView, RecentlyViewedMixin):
         return profile
 
     def get_photo(self):
-        if self.object.photo is not None:
+        if self.object.photo :
             return self.object.photo.url
-        return self.photo
+        return static('images/milk-products.jpg')
 
     def get_context_data(self, **kwargs):
         self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.name, self.get_photo())
@@ -329,7 +327,6 @@ class AnimalDetailsView(views.DetailView, RecentlyViewedMixin):
     model = AnimalProduct
     context_object_name = 'meat'
     template_name = 'catalog/details-animal-page.html'
-    photo = static('images/meat.jpg')
     model_name = object.__class__.__name__
 
     def get_profile(self):
@@ -337,9 +334,9 @@ class AnimalDetailsView(views.DetailView, RecentlyViewedMixin):
         return profile
 
     def get_photo(self):
-        if self.object.photo is not None:
+        if self.object.photo:
             return self.object.photo.url
-        return self.photo
+        return static('images/meat.jpg')
 
     def get_context_data(self, **kwargs):
         self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.name, self.get_photo())
