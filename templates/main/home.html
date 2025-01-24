@@ -41,21 +41,29 @@
     <div class="card-container">
         <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
-            <a href="{% url 'details vegetable' item.id %}">
-                <img class="card-img" src="{{ item.photo }}" alt="vegetable or fruit photo">
-            </a>
+            {% if item.photo %}
+            <img class="card-img" src="{{ item.photo.url }}" alt="vegetable or fruit photo">
+        {% else %}
+            <img class="card-img" src="{% static 'images/fruit-and-veg.jpg' %}" alt="vegetable or fruit  photo">
+        {% endif %}
         {% elif item.type == 'Nut' %}
-            <a href="{% url 'details nut' item.id %}">
-                <img class="card-img" src="{{ item.photo }}" alt="nut photo">
-            </a>
+            {% if item.photo %}
+            <img class="card-img" src="{{ item.photo.url }}" alt="nut photo">
+        {% else %}
+            <img class="card-img" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
+        {% endif %}
         {% elif item.type == 'DairyProduct' %}
-            <a href="{% url 'details dairy' item.id %}">
-                <img class="card-img" src="{{ item.photo }}" alt="dairy product photo">
-            </a>
+            {% if item.photo %}
+            <img class="card-img" src="{{ item.photo.url }}" alt="dairy photo">
+        {% else %}
+            <img class="card-img" src="{% static 'images/milk-products.jpg' %}" alt="dairy photo">
+        {% endif %}
         {% elif item.type == 'AnimalProduct' %}
-            <a href="{% url 'details animal' item.id %}">
-                <img class="card-img" src="{{ item.photo }}" alt="animal product photo">
-            </a>
+            {% if item.photo %}
+            <img class="card-img" src="{{ item.photo.url }}" alt="animal photo">
+        {% else %}
+            <img class="card-img" src="{% static 'images/meat.jpg' %}" alt="animal photo">
+        {% endif %}
         {% endif %}
     </div>
 {% endfor %}
