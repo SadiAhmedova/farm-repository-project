@@ -11,7 +11,6 @@
         {% endif %}
     </a>
 
-    {% if request.user.is_authenticated and request.user.id != dairy.user_id %}
          <button 
             class="card-btn" 
             id="add-to-cart-DairyProduct-{{ dairy.pk }}"
@@ -22,5 +21,4 @@
         >
             <img src="{% static 'images/shopping-trolley.png' %}" alt="Add to cart">
         </button>
-    {% endif %}
 </div>

@@ -9,7 +9,7 @@
             <img class="card-img" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
         {% endif %}
     </a>
-    {% if request.user.is_authenticated and request.user.id != nut.user_id %}
+    
                 <button 
             class="card-btn" 
             id="add-to-cart-Nut-{{ nut.pk }}"
@@ -20,7 +20,6 @@
         >
             <img src="{% static 'images/shopping-trolley.png' %}" alt="Add to cart">
         </button>
-    {% endif %}
 </div>
 
 
