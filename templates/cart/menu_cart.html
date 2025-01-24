@@ -1,6 +1,6 @@
-{% load static %}
 
-<a id="menu-cart-button" class="" href="{% url 'cart' %}">
-    <img width="50px" height="30px" src="{% static 'images/cart.png' %}" alt="Cart">
-    <span id="cart-length-text">{{ cart|length }}</span>
+{% block basket %}
+<a id="menu-cart-button" class="basket-btn" href="{% url 'cart' %}">
+    Basket(<span id="cart-length-text">{{ cart|length }}</span>)
 </a>
+{% endblock %}
