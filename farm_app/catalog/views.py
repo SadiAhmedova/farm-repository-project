@@ -102,16 +102,16 @@ class VegetableDetailsView(views.DetailView, RecentlyViewedMixin):
 
     def get_photo(self):
         if self.object.photo is not None:
-            return self.object.photo
+            return self.object.photo.url
         return self.photo
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.name, self.get_photo)
+        self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.name, self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
             'recently_viewed': self.get_recently_viewed,
-            'photo': self.get_photo,
+            'photo': self.get_photo(),
             'model_name': self.model_name,
             'profile': self.get_profile,
         })
@@ -181,16 +181,16 @@ class NutDetailsView(views.DetailView, RecentlyViewedMixin):
 
     def get_photo(self):
         if self.object.photo is not None:
-            return self.object.photo
+            return self.object.photo.url
         return self.photo
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'Nut', self.object.name, self.get_photo)
+        self.add_to_recently_viewed(self.object.id, 'Nut', self.object.name, self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
             'recently_viewed': self.get_recently_viewed,
-            'photo': self.get_photo,
+            'photo': self.get_photo(),
             'model_name': self.model_name,
             'profile': self.get_profile,
         })
@@ -259,16 +259,16 @@ class DairyDetailsView(views.DetailView, RecentlyViewedMixin):
 
     def get_photo(self):
         if self.object.photo is not None:
-            return self.object.photo
+            return self.object.photo.url
         return self.photo
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.name, self.get_photo)
+        self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.name, self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
             'recently_viewed': self.get_recently_viewed,
-            'photo': self.get_photo,
+            'photo': self.get_photo(),
             'model_name': self.model_name,
             'profile': self.get_profile,
         })
@@ -338,16 +338,16 @@ class AnimalDetailsView(views.DetailView, RecentlyViewedMixin):
 
     def get_photo(self):
         if self.object.photo is not None:
-            return self.object.photo
+            return self.object.photo.url
         return self.photo
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.name, self.get_photo)
+        self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.name, self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
             'recently_viewed': self.get_recently_viewed,
-            'photo': self.get_photo,
+            'photo': self.get_photo(),
             'model_name': self.model_name,
             'profile': self.get_profile,
         })
