@@ -26,14 +26,14 @@
     <a href="#" class="nav-item">About Us</a>
 
     {% if request.user.is_authenticated %}
-        <li class="nav-item"
+        <div class="nav-item"
                 id="menu-cart"
                 hx-get="{% url 'menu cart' %}"
                 hx-trigger="update-menu-cart from:body"
                 hx-swap="innerHTML"
             >
                 {% include 'cart/menu_cart.html' %}
-        </li>
+        </div>
         
       <div class="profile-dropdown">
         <button class="profile-btn">Profile</button>

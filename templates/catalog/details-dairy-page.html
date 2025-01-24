@@ -3,7 +3,9 @@
 {% block title %} {{ dairy.name }} - {{ dairy.percent }} {% endblock %}
 
 {% block page_content %}
-    <div class="details-content">
+    <div class="header-container">
+        <div class="header-title">Details of {{ dairy.name }} - {{ dairy.percent }} </div>
+    </div>
 
 
         <div class="details-image">
@@ -72,6 +74,16 @@
                 {% endif %}
             {% endif %}
             </div>
+        </div>
+    
+    
+    
+    <div>MORE PRODUCTS OF THE SAME CATEGORY</div>
+    <div class="category-items-container">
+        <div class="products-container">
+            {% for dairy in dairies %}
+                {% include 'main/dairy-card.html' %}
+            {% endfor %}
         </div>
     </div>
 

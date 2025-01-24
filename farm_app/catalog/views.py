@@ -10,10 +10,12 @@ from farm_app.catalog.forms import *
 from farm_app.catalog.mixins import UserPermissionMixin
 from farm_app.catalog.models import *
 
+from farm_app.catalog.mixins import RecentlyViewedMixin
+
 UserModel = get_user_model()
 
 
-class IndexView(views.ListView):
+class IndexView(views.ListView, RecentlyViewedMixin):
     template_name = 'main/home.html'
 
 
@@ -36,6 +38,7 @@ class IndexView(views.ListView):
             context['nuts'] = Nut.objects.all()
             context['animal_products'] = AnimalProduct.objects.all()
             context['current_page'] = current_page
+            context['recently_viewed'] = self.get_recently_viewed
 
             return context
 
@@ -86,7 +89,7 @@ class VegetableEditView(views.UpdateView, UserPermissionMixin):
 
 
 
-class VegetableDetailsView(views.DetailView):
+class VegetableDetailsView(views.DetailView, RecentlyViewedMixin):
     model = VegetableAndFruit
     context_object_name = 'plant'
     template_name = 'catalog/details-vegetable-page.html'
@@ -103,8 +106,11 @@ class VegetableDetailsView(views.DetailView):
         return self.photo
 
     def get_context_data(self, **kwargs):
+        self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.name, self.get_photo)
+
         context = super().get_context_data(**kwargs)
         context.update({
+            'recently_viewed': self.get_recently_viewed,
             'photo': self.get_photo,
             'model_name': self.model_name,
             'profile': self.get_profile,
@@ -162,7 +168,7 @@ class NutEditView(views.UpdateView, UserPermissionMixin):
         return context
 
 
-class NutDetailsView(views.DetailView):
+class NutDetailsView(views.DetailView, RecentlyViewedMixin):
     model = Nut
     context_object_name = 'nut'
     template_name = 'catalog/details-nut-page.html'
@@ -179,8 +185,11 @@ class NutDetailsView(views.DetailView):
         return self.photo
 
     def get_context_data(self, **kwargs):
+        self.add_to_recently_viewed(self.object.id, 'Nut', self.object.name, self.get_photo)
+
         context = super().get_context_data(**kwargs)
         context.update({
+            'recently_viewed': self.get_recently_viewed,
             'photo': self.get_photo,
             'model_name': self.model_name,
             'profile': self.get_profile,
@@ -237,7 +246,7 @@ class DairyEditView(views.UpdateView, UserPermissionMixin):
         return context
 
 
-class DairyDetailsView(views.DetailView):
+class DairyDetailsView(views.DetailView, RecentlyViewedMixin):
     model = DairyProduct
     context_object_name = 'dairy'
     template_name = 'catalog/details-dairy-page.html'
@@ -254,8 +263,11 @@ class DairyDetailsView(views.DetailView):
         return self.photo
 
     def get_context_data(self, **kwargs):
+        self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.name, self.get_photo)
+
         context = super().get_context_data(**kwargs)
         context.update({
+            'recently_viewed': self.get_recently_viewed,
             'photo': self.get_photo,
             'model_name': self.model_name,
             'profile': self.get_profile,
@@ -313,7 +325,7 @@ class AnimalEditView(UserPermissionMixin, views.UpdateView):
         return context
 
 
-class AnimalDetailsView(views.DetailView):
+class AnimalDetailsView(views.DetailView, RecentlyViewedMixin):
     model = AnimalProduct
     context_object_name = 'meat'
     template_name = 'catalog/details-animal-page.html'
@@ -330,8 +342,11 @@ class AnimalDetailsView(views.DetailView):
         return self.photo
 
     def get_context_data(self, **kwargs):
+        self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.name, self.get_photo)
+
         context = super().get_context_data(**kwargs)
         context.update({
+            'recently_viewed': self.get_recently_viewed,
             'photo': self.get_photo,
             'model_name': self.model_name,
             'profile': self.get_profile,
