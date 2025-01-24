@@ -37,24 +37,24 @@
 
     <div>
     <h3>Recently Viewed</h3>
-    {% for item in recently_viewed %}
+    {% for product in recently_viewed %}
     <div class="card-container">
         <div class="card-name">{{ product.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
                 <a href="{% url 'details vegetable' product.pk %}">
-                        <img class="card-img" src="{{ product.photo.url }}" alt="vegetable or fruit photo">
+                        <img class="card-img" src="{{ product.photo.url if product.photo else '/static/images/fruit-and-veg.jpg' }}"  alt="vegetable or fruit photo">
                 </a>
         {% elif item.type == 'Nut' %}
                 <a href="{% url 'details nut' product.pk %}">
-                        <img class="card-img" src="{{ product.photo.url }}" alt="nut photo">
+                        <img class="card-img" src="{{ product.photo.url if product.photo else '/static/images/nuts-and-dry-fruits.jpg' }}"  alt="nut photo">
                 </a>
         {% elif item.type == 'DairyProduct' %}
                 <a href="{% url 'details dairy' product.pk %}">
-                        <img class="card-img" src="{{ product.photo.url }}" alt="dairy product photo">
+                        <img class="card-img" src="{{ product.photo.url if product.photo else '/static/images/milk-products.jpg' }}"  alt="dairy product photo">
                 </a>
         {% elif item.type == 'AnimalProduct' %}
                 <a href="{% url 'details animal' product.pk %}">
-                        <img class="card-img" src="{{ product.photo.url }}" alt="animal product photo">
+                        <img class="card-img" src="{{ product.photo.url if product.photo else '/static/images/meat.jpg' }}"  alt="animal product photo">
                 </a>
         {% endif %}
     </div>
