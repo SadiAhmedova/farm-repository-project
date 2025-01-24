@@ -97,6 +97,8 @@ def update_cart(request, product_id, action, item_type):
 
     return response
 
+def menu_cart(request):
+    return render(request, 'cart/menu_cart.html')
 
 @login_required(login_url='/login/')
 def delete_item(request,item_type, product_id):
