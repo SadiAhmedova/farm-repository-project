@@ -105,7 +105,7 @@ class VegetableDetailsView(views.DetailView, RecentlyViewedMixin):
         return static('images/fruit-and-veg.jpg')
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.name, self.get_photo())
+        self.add_to_recently_viewed(self.object.id, 'VegetableAndFruit', self.object.__str__(), self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
@@ -183,7 +183,7 @@ class NutDetailsView(views.DetailView, RecentlyViewedMixin):
         return static('images/nuts-and-dry-fruits.jpg')
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'Nut', self.object.name, self.get_photo())
+        self.add_to_recently_viewed(self.object.id, 'Nut', self.object.__str__(), self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
@@ -261,7 +261,7 @@ class DairyDetailsView(views.DetailView, RecentlyViewedMixin):
         return static('images/milk-products.jpg')
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.name, self.get_photo())
+        self.add_to_recently_viewed(self.object.id, 'DairyProduct', self.object.__str__(), self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({
@@ -339,7 +339,7 @@ class AnimalDetailsView(views.DetailView, RecentlyViewedMixin):
         return static('images/meat.jpg')
 
     def get_context_data(self, **kwargs):
-        self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.name, self.get_photo())
+        self.add_to_recently_viewed(self.object.id, 'AnimalProduct', self.object.__str__(), self.get_photo())
 
         context = super().get_context_data(**kwargs)
         context.update({

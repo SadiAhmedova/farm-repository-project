@@ -43,7 +43,7 @@
 {% for item in recently_viewed %}
     <div class="products-container">
     <div class="recently-viewed-card-container" >
-        <div class="card-name">{{ item }}</div>
+        <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
             <a href="{% url 'details vegetable' item.id %}">
                 {% if item.photo %}
