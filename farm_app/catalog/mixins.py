@@ -16,8 +16,10 @@ class RecentlyViewedMixin:
     def add_to_recently_viewed(self, product_id, product_type, product_name, product_photo):
         recently_viewed = self.request.session.get('recently_viewed', [])
 
-        if product_photo:
+        if hasattr(product_photo, 'url'):
             product_photo = product_photo.url
+        elif isinstance(product_photo, str): 
+            pass
         else:
             product_photo = None
 
