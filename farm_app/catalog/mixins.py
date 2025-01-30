@@ -16,7 +16,10 @@ class RecentlyViewedMixin:
     def add_to_recently_viewed(self, product_id, product_type, product_name, product_photo):
         recently_viewed = self.request.session.get('recently_viewed', [])
 
-        product_photo = product_photo if product_photo else None
+        if product_photo:
+            product_photo = product_photo.url
+        else:
+            product_photo = None
 
         product_entry = {'id': product_id, 'type': product_type, 'name': product_name, 'photo': product_photo}
 

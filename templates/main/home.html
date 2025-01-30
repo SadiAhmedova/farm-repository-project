@@ -46,25 +46,25 @@
         <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
             {% if item.photo %}
-            <img class="card-img" src="{{ item.photo.url }}" alt="vegetable or fruit photo">
+            <img class="card-img" src="{{ item.photo }}" alt="vegetable or fruit photo">
             {% else %}
             <img class="card-img" src="{% static 'images/fruit-and-veg.jpg' %}" alt="vegetable or fruit  photo">
             {% endif %}
         {% elif item.type == 'Nut' %}
             {% if item.photo %}
-            <img class="card-img" src="{{ item.photo.url }}" alt="nut photo">
+            <img class="card-img" src="{{ item.photo }}" alt="nut photo">
         {% else %}
             <img class="card-img" src="{% static 'images/nuts-and-dry-fruits.jpg' %}" alt="nut photo">
         {% endif %}
         {% elif item.type == 'DairyProduct' %}
             {% if item.photo %}
-            <img class="card-img" src="{{ item.photo.url }}" alt="dairy photo">
+            <img class="card-img" src="{{ item.photo }}" alt="dairy photo">
         {% else %}
             <img class="card-img" src="{% static 'images/milk-products.jpg' %}" alt="dairy photo">
         {% endif %}
         {% elif item.type == 'AnimalProduct' %}
             {% if item.photo %}
-            <img class="card-img" src="{{ item.photo.url }}" alt="animal photo">
+            <img class="card-img" src="{{ item.photo }}" alt="animal photo">
         {% else %}
             <img class="card-img" src="{% static 'images/meat.jpg' %}" alt="animal photo">
         {% endif %}
