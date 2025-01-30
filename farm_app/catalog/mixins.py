@@ -18,7 +18,7 @@ class RecentlyViewedMixin:
 
         if hasattr(product_photo, 'url'):
             product_photo = product_photo.url
-        elif isinstance(product_photo, str): 
+        elif isinstance(product_photo, str):
             pass
         else:
             product_photo = None
