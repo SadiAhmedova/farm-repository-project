@@ -42,14 +42,14 @@
     </div>
 {% for item in recently_viewed %}
     <div class="products-container">
-    <div class="card-container" style="height: 350px;">
+    <div class="recently-viewed-card-container" >
         <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
             {% if item.photo %}
             <img class="card-img" src="{{ item.photo.url }}" alt="vegetable or fruit photo">
-        {% else %}
+            {% else %}
             <img class="card-img" src="{% static 'images/fruit-and-veg.jpg' %}" alt="vegetable or fruit  photo">
-        {% endif %}
+            {% endif %}
         {% elif item.type == 'Nut' %}
             {% if item.photo %}
             <img class="card-img" src="{{ item.photo.url }}" alt="nut photo">

@@ -170,6 +170,17 @@ body,html {
 
 
 /*CARDS*/
+.recently-viewed-card-container{
+  width: 395px;
+  height: 374px;
+  position: relative;
+  background: #ebebe2;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px #E6E6E6 solid;
+  margin: 10px;
+}
+
 .card-container {
   width: 395px;
   height: 444px;
