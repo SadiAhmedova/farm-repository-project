@@ -23,7 +23,7 @@
   <nav class="navbar-links">
     
     <a href="{% url 'home' %}" class="nav-item">Shop</a>
-    <a href="#" class="nav-item">About Us</a>
+    <a href="{% url 'about' %}" class="nav-item">About Us</a>
 
     {% if request.user.is_authenticated %}
         <div class="nav-item"

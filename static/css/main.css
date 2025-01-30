@@ -290,3 +290,58 @@ body,html {
   line-height: 26px;
   word-wrap: break-word;
 }
+
+
+/*ABOUT US*/
+.about-header{
+  width: 100%;
+  text-align: center;
+}
+.about-header > p{
+  color: black;
+  font-size: 64px;
+  font-family: Newsreader;
+  font-weight: 400;
+  line-height: 76.80px;
+  word-wrap: break-word;
+}
+.header-special{
+  font-style: italic;
+}
+.about-btn-container{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #426B1F;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.about-btn{
+  left: 32px;
+  top: 19px;
+  position: absolute;
+  color: white;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 26px;
+  word-wrap: break-word;
+}
+.about-text{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.about-text > p{
+  color: black;
+  font-size: 20px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 32px;
+  word-wrap: break-word;
+  padding-left: 200px;
+}
+
+.about-topic{
+  padding-left: 0;
+}

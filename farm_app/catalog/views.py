@@ -2,6 +2,7 @@ from itertools import chain
 
 from django.contrib.auth import get_user_model
 from django.conf.urls.static import static
+from django.shortcuts import redirect
 from django.urls import reverse, resolve
 from django.views import generic as views
 
@@ -41,6 +42,9 @@ class IndexView(views.ListView, RecentlyViewedMixin):
             context['recently_viewed'] = self.get_recently_viewed
 
             return context
+
+def aboutView(request):
+    return redirect('about')
 
 
 class VegetableCreateView(views.CreateView):
