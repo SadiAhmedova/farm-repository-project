@@ -44,7 +44,7 @@ class IndexView(views.ListView, RecentlyViewedMixin):
             return context
 
 def aboutPage(request):
-    return render(request, 'about.html')
+    return render(request, 'about-us.html')
 
 
 class VegetableCreateView(views.CreateView):
