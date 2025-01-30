@@ -45,7 +45,7 @@
     <div class="recently-viewed-card-container" >
         <div class="card-name">{{ item }}</div>
         {% if item.type == 'VegetableAndFruit' %}
-            <a href="{% url 'details vegetable' item.pk %}">
+            <a href="{% url 'details vegetable' item.id %}">
                 {% if item.photo %}
                     <img class="card-img" src="{{ item.photo }}" alt="vegetable or fruit photo">
                 {% else %}
@@ -53,7 +53,7 @@
                 {% endif %}
             </a>
         {% elif item.type == 'Nut' %}
-            <a href="{% url 'details nut' item.pk %}">
+            <a href="{% url 'details nut' item.id %}">
                 {% if item.photo %}
                     <img class="card-img" src="{{ item.photo }}" alt="nut photo">
                 {% else %}
@@ -61,7 +61,7 @@
                 {% endif %}
             </a>
         {% elif item.type == 'DairyProduct' %}
-            <a href="{% url 'details dairy' item.pk %}">
+            <a href="{% url 'details dairy' item.id %}">
                 {% if item.photo %}
                     <img class="card-img" src="{{ item.photo }}" alt="dairy photo">
                 {% else %}
@@ -69,7 +69,7 @@
                 {% endif %}
             </a>
         {% elif item.type == 'AnimalProduct' %}
-            <a href="{% url 'details animal' item.pk %}">
+            <a href="{% url 'details animal' item.id %}">
                 {% if item.photo %}
                     <img class="card-img" src="{{ item.photo }}" alt="animal photo">
                 {% else %}
