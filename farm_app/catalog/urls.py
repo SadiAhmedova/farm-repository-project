@@ -6,7 +6,7 @@ from farm_app.catalog import views as views
 
 urlpatterns = ([
     path('', views.IndexView.as_view(), name='home'),
-    path('about/', views.aboutView, name='about'),
+    path('about/', views.aboutPage, name='about'),
 
     path('vegetable/add/', views.VegetableCreateView.as_view(), name='add vegetable'),
     path('vegetable/<int:pk>/', include([
