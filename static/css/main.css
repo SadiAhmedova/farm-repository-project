@@ -317,9 +317,8 @@ body,html {
   overflow: hidden;
 }
 .about-btn{
-  left: 32px;
-  top: 19px;
-  position: absolute;
+  position: relative;
+  left: 450px;
   color: white;
   font-size: 20px;
   font-family: Inter;
@@ -339,9 +338,26 @@ body,html {
   font-weight: 400;
   line-height: 32px;
   word-wrap: break-word;
-  padding-left: 200px;
+  padding-left: 250px;
 }
 
 .about-topic{
-  padding-left: 0;
+  padding-left: -250px;
+}
+.about-img-container{
+  background: none;
+  border: none;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-content: space-between;
+}
+.about-img{
+  width: 250px;
+  height: 350px;
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px #E6E6E6 solid;
+  margin: 10px;
 }
