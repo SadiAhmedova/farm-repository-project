@@ -342,6 +342,10 @@ body,html {
   word-wrap: break-word;
   padding-left: 30px;
 }
+.about-topic{
+  padding-left: -30px;
+
+}
 
 
 .about-img-container{
