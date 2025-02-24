@@ -2,29 +2,60 @@
 {% load static %}
 {% block title %} Sign in {% endblock %}
 {% block page_content %}
-
-
-        <div class="login-form">
-
-
-            <div class="login-item item2">
-                <h1 class="big-text">Sign in!</h1>
+    
+    
+    <div class="login-container">
+        <div class="box" >
+            <h2>Login</h2>
+            <div id="loginFields" class="hidden">
                 <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     {{ form }}
-                                <div class="registration-link">
-                    <p>Don't have an account?</p>
-                    <a href="{% url 'register' %}">Sign up</a>
-                </div>
                     <div class="button-div">
-                        <button class="cust-button" type="submit">Log in</button>
+                        <button class="button" type="submit">Log in</button>
                     </div>
                 </form>
-
             </div>
-           <div class="login-item item1">
-                <img alt="Login photo" src="{% static 'images/undraw_login_re_4vu2.svg' %}">
-            </div>
-
+            <p onclick="toggleForms()" style="cursor:pointer; color:blue;" id="toggleToLogin" class="hidden">Already have an account?</p>
         </div>
+        <div class="box">
+            <h2>Register</h2>
+            <div id="registerFields" class="hidden">
+                <form method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+            {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="alert-danger text-danger">
+                        {% for error in field.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                    </div>
+                
+                {% endfor %}
+                <div class="login-link">
+                    <p> Have an account?</p>
+                    <a href="{% url "login" %}">Sign in</a>
+                </div>
+                <div class="register-button-div">
+                    <button class="cust-button create-button" type="submit">Create</button>
+                </div>
+            </form>
+                
+            </div>
+            <p onclick="toggleForms()" style="cursor:pointer; color:blue;" id="toggleToRegister">Don't have an account?</p>
+        </div>
+    </div>
+    
 {% endblock %}
