@@ -19,7 +19,7 @@
 }
 .form-field {
     width: 100%;
-    margin: 15px 0;
+    margin: 15px 10px;
     padding: 8px;
 }
 .box h2{
@@ -27,12 +27,8 @@
     font-size: 32px;
     color: black;
 }
-.form-login{
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.login-button{
+    align-self: center;
 }
 .hidden {
     display: none;

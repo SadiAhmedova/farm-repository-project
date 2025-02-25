@@ -8,7 +8,7 @@
         <div class="box" >
             <h2>Login</h2>
             <div id="loginFields" >
-                <form action="{% url 'login' %}" method="post" enctype="multipart/form-data" class="form-login">
+                <form action="{% url 'login' %}" method="post" enctype="multipart/form-data" >
                     {% csrf_token %}
                     
                     {% if login_form.non_field_errors %}
@@ -36,7 +36,7 @@
                 
                 {% endfor %}
     
-                <button class="button" type="submit" name="login_submit">Log in</button>
+                <button class="button login-button" type="submit" name="login_submit">Log in</button>
                 </form>
             </div>
             <p onclick="toggleForms()" id="toggleToLogin" class="hidden link-field">Already have an account?</p>
@@ -44,7 +44,7 @@
         <div class="box">
             <h2>Register</h2>
             <div id="registerFields" class="hidden">
-                <form method="post" action="{% url 'login' %}" enctype="multipart/form-data" class="form-login">
+                <form method="post" action="{% url 'login' %}" enctype="multipart/form-data" >
                 {% csrf_token %}
                 
                 {% if register_form.non_field_errors %}
@@ -68,7 +68,7 @@
                     </div>
                 
                 {% endfor %}
-                    <button class="button" type="submit" name="register_submit">Create</button>
+                    <button class="button login-button" type="submit" name="register_submit">Register</button>
             </form>
                 
             </div>
