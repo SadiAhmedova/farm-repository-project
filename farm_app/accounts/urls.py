@@ -2,12 +2,11 @@ from django.urls import path, include
 from farm_app import settings
 from django.conf.urls.static import static
 
-from farm_app.accounts.views import ProfileLoginView, ProfileRegisterView, ProfileDetailsView, ProfileLogoutView, \
+from farm_app.accounts.views import ProfileLoginView, ProfileDetailsView, ProfileLogoutView, \
     ProfileEditView, ProfileDeleteView, error_404_view
 
 urlpatterns = ([
 path('login/', ProfileLoginView.as_view(), name='login'),
-    path('register/', ProfileRegisterView.as_view(), name='register'),
     path('logout/', ProfileLogoutView.as_view(), name='logout'),
 
     path('<int:pk>/', include([

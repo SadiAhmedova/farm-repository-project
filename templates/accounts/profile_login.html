@@ -7,7 +7,7 @@
     <div class="login-container">
         <div class="box" >
             <h2>Login</h2>
-            <div id="loginFields" class="hidden">
+            <div id="loginFields" >
                 <form action="{% url 'login' %}" method="post">
                     {% csrf_token %}
                     {{ form }}

@@ -126,23 +126,23 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 function toggleForms() {
-            const loginFields = document.getElementById('loginFields');
-            const registerFields = document.getElementById('registerFields');
-            const toggleToRegister = document.getElementById('toggleToRegister');
-            const toggleToLogin = document.getElementById('toggleToLogin');
+    const loginFields = document.getElementById('loginFields');
+    const registerFields = document.getElementById('registerFields');
+    const toggleToRegister = document.getElementById('toggleToRegister');
+    const toggleToLogin = document.getElementById('toggleToLogin');
 
-            if (registerFields.classList.contains('hidden')) {
-                registerFields.classList.remove('hidden');
-                toggleToLogin.classList.remove('hidden');
-                loginFields.classList.add('hidden');
-                toggleToRegister.classList.add('hidden');
-            } else {
-                registerFields.classList.add('hidden');
-                toggleToLogin.classList.add('hidden');
-                loginFields.classList.remove('hidden');
-                toggleToRegister.classList.remove('hidden');
-            }
-        }
+    if (registerFields.classList.contains('hidden')) {
+        registerFields.classList.remove('hidden');
+        toggleToLogin.classList.remove('hidden');
+        loginFields.classList.add('hidden');
+        toggleToRegister.classList.add('hidden');
+    } else {
+        registerFields.classList.add('hidden');
+        toggleToLogin.classList.add('hidden');
+        loginFields.classList.remove('hidden');
+        toggleToRegister.classList.remove('hidden');
+    }
+}
 
 
 
