@@ -19,7 +19,7 @@
 }
 .form-field {
     width: 100%;
-    margin: 5px 15px 10px 15px;
+    margin: 5px 5px 10px;
     padding: 8px;
 }
 .box h2{
@@ -28,7 +28,7 @@
     color: black;
 }
 .login-button{
-    margin-left: 90px;
+    margin-left: 100px;
 }
 .hidden {
     display: none;
