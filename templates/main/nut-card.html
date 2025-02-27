@@ -1,4 +1,5 @@
 {% load static %}
+{% if nut.user_id != request.user.pk%}
 <div class="card-container">
   <div class="card-name">{{ nut }}</div>
   <div class="card-price">${{ nut.price }}/kg</div>
@@ -22,6 +23,7 @@
         </button>
     {% endif %}
 </div>
+{% endif %}
 
 
 
