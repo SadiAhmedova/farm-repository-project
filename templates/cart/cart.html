@@ -10,17 +10,18 @@
             </div>
 
     {% if cart|length <= 0  %}
-        <div class="header">You have no products in your basket<br><br>
-        <a href="{% url 'checkout' %}">
-            <div style="width: 347px; height: 48px; left: 24px; top: 246px; position: absolute; background: #426B1F; border-radius: 8px; overflow: hidden">
-                <div class="payment-btn">Go to the shop</div>
-                <div style="width: 32px; height: 32px; left: 299px; top: 8px; position: absolute">
-                    <div style="width: 16px; height: 12px; left: 8px; top: 10px; position: absolute; border: 1px white solid"></div>
+        <div class="empty-container">
+            <div class="empty-basket">You have no products in your basket</div>
+            <a href="{% url 'home' %}">
+                <div class="payment-btn">Go to the shop 
+                    <div data-svg-wrapper style="position: relative">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16H24M24 16L18 10M24 16L18 22" stroke="white"/>
+                        </svg>
+                    </div>
                 </div>
-            </div>
-        </a>
+            </a>
         </div>
-
     {% else %}
 
     {% for item in cart %}
