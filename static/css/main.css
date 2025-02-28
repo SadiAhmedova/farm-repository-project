@@ -370,7 +370,7 @@ footer{
   font-size: 15px;
   width: 100%;
   height: fit-content;
-  margin-bottom: 30px;
+  margin-top: 30px;
 }
 .footer-menu{
   display: flex;
@@ -395,6 +395,7 @@ footer{
   padding-left: 30px;
   align-items: center;
   flex-direction: row;
+  align-content: space-around;
 }
 
 .under-menu {
@@ -402,7 +403,8 @@ footer{
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin:20px 0;
+  margin:20px 0 10px 0;
+  flex-flow: wrap;
 }
 .under-menu > div{
   font-size: 16px;
