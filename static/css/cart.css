@@ -2,11 +2,32 @@
   width: 395px;
   height: 318px;
   position: relative;
-  background: #FAFAF5;
+  background: var(--background-color);
   border-radius: 24px;
   overflow: hidden;
   border: 2px #E6E6E6 solid;
   display: flex;
   align-items: center;
   justify-items: center;
+}
+
+.basket-btn-container{
+  width: 100%;
+  height: 100%;
+  padding: 8px 16px 8px 24px;
+  background: var(--primary-color);
+  border-radius: 8px;
+  overflow: hidden;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 112px;
+  display: inline-flex;
+}
+.basket-btn-text{
+  color: white;
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 20px;
+  word-wrap: break-word;
 }
