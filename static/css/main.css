@@ -363,3 +363,38 @@ body,html {
   border: 2px #E6E6E6 solid;
   margin: 10px;
 }
+
+/*FOOTER*/
+footer{
+  font-size: 15px;
+  width: 100%;
+  height: fit-content;
+}
+.footer-menu{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1920px;
+  padding-left: 40px;
+  padding-right: 40px;
+  flex-direction: row;
+}
+.footer-column{
+  flex: 1;
+  padding: 27px 0;
+  margin-right: 32px;
+  border-bottom: 1px solid dimgrey;
+}
+.last{
+  border-left: 1px solid dimgrey;
+}
+.under-menu{
+  width: 100%;
+  align-items: center;
+}
+.under-menu > div{
+  margin-left:450px;
+  font-size: 18px;
+  color: dimgrey;
+}

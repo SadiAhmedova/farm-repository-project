@@ -53,6 +53,50 @@
 
     {% endblock %}
 
+<footer>
+    <nav class="footer-menu">
+    <div class="footer-column">
+        <div><b>CONTACTS</b></div><br>
+        <div>Contacts</div>
+        <div>About us</div>
+        <div>Q&A</div>
+    </div>
+    <div class="footer-column">
+        <div><b>PROFILE</b></div><br>
+        {% if request.user.is_authenticated %}
+        <div>Your profile</div>
+        <div>Your orders</div>
+        {% else %}
+        <div>Sign in</div>
+        {% endif %}
+    </div>
+    <div class="last footer-column">
+        <div>
+            <a href="https://www.facebook.com/profile.php?id=61573651983856" target="_blank">
+                <img src="{% static 'images/facebook.jpg' %}" alt="Follow us on Facebook" width="50" height="50">
+            </a>
+        </div>
+        <div>
+            <a href="https://www.instagram.com/farm.shop.2025/" target="_blank">
+                <img src="{% static 'images/instagram.jpg' %}" alt="Follow us on Instagram" width="50" height="50">
+            </a>
+        </div>
+        <div>
+            <a href="mailto:farmapp@abv.bg">
+                <img src="{% static 'images/mail.jpg' %}" alt="Email Us" width="50" height="50">
+            </a>
+        </div>
+        
+        
+    </div>
+    </nav>
+    <div class="under-menu">
+        <div>© Farm Shop 2025</div>
+    </div>
+</footer>
+
+
+
 
 
 <script src="https://unpkg.com/htmx.org@1.9.4"></script>
