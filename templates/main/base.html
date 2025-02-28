@@ -56,18 +56,26 @@
 <footer>
     <nav class="footer-menu">
     <div class="footer-column">
+        <div><b>INFORMATION</b></div><br>
+        <div>Working hours: 00:00-24:00</div>
+        <div>Email: <a href="mailto:farmapp@abv.bg" class="link">farmapp@abv.bg</a></div>
+        <div>Text us on Facebook and Instagram</div>
+        <div>Located in Slivo pole, Bulgaria</div>
+        <div>Worldwide delivery</div>
+    </div>
+        <div class="footer-column">
         <div><b>CONTACTS</b></div><br>
-        <div>Contacts</div>
-        <div>About us</div>
-        <div>Q&A</div>
+            <a href="#" class="link">Contacts</a>
+            <a href="{% url 'about' %}" class="link">About us</a>
+            <a href="#" class="link">Q&A</a>
     </div>
     <div class="footer-column">
         <div><b>PROFILE</b></div><br>
         {% if request.user.is_authenticated %}
-        <div>Your profile</div>
-        <div>Your orders</div>
+            <a href="{% url 'profile details' pk=request.user.pk %}" class="link">Your profile</a>
+            <a href="{% url 'my orders' pk=request.user.pk %}" class="link">Your orders</a>
         {% else %}
-        <div>Sign in</div>
+            <a href="{% url 'login' %}" class="link">Sign in</a>
         {% endif %}
     </div>
     <div class="last footer-column">
