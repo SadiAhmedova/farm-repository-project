@@ -1,8 +1,12 @@
 
 from django.utils import timezone
-
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
+
 
 from farm_app.catalog.models import VegetableAndFruit, DairyProduct, Nut, AnimalProduct
 
@@ -30,13 +34,17 @@ class Order(models.Model):
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     phone = models.CharField(max_length=10, validators=[validate_ten_digits], help_text="Enter a valid 10-digit phone number.")
-
+    items = models.ManyToManyField(OrderItem, related_name='orders')
     created_at = models.DateTimeField(auto_now_add=True)
 
     paid = models.BooleanField(default=False)
     paid_amount = models.IntegerField(blank=True, null=True)
 
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default=ORDERED)
+
+    @property
+    def total_price(self):
+        return sum(item.price * item.quantity for item in self.items.all())
 
     def update_status(self):
         three_days_ago = timezone.now() - timezone.timedelta(days=3)
@@ -49,44 +57,42 @@ class Order(models.Model):
             self.save()
 
     def send_order_emails(self):
-        seller_orders = {}
-        for item in self.items.all():
-            seller = None
-            if item.fruit:
-                seller = item.fruit.user
-            elif item.dairy:
-                seller = item.dairy.user
-            elif item.meat:
-                seller = item.meat.user
-            elif item.nut:
-                seller = item.nut.user
+        sellers = set(item.seller for item in self.items.all())
 
-            if seller:
-                if seller.email not in seller_orders:
-                    seller_orders[seller.email] = []
-                seller_orders[seller.email].append(f"{item.get_name()} - {item.quantity} pcs")
+        for seller in sellers:
+            seller_email = seller.email
+            seller_items = self.items.filter(seller=seller)
 
-        # Send email to each seller
-        for seller_email, products in seller_orders.items():
-            subject = "New Order Notification - FarmApp"
-            message = f"Dear Seller,\n\nYou have a new order for the following products:\n\n"
-            message += "\n".join(products)
-            message += "\n\nPlease prepare these products for shipping.\n\nFarmApp Team"
+            html_message = render_to_string('order_notification.html', {
+                'order': self,
+                'seller': seller,
+                'items': seller_items,
+            })
 
-            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [seller_email])
+            email = EmailMessage(
+                subject="New Order Notification - FarmApp",
+                body=html_message,
+                from_email=settings.EMAIL_HOST_USER,
+                to=[seller_email],
+            )
+            email.content_subtype = "html"
+            email.send()
 
-        # Send confirmation email to buyer
-        buyer_subject = "Order Confirmation - FarmApp"
-        buyer_message = f"Dear {self.first_name},\n\nThank you for your order! Here are your order details:\n\n"
-        for item in self.items.all():
-            buyer_message += f"- {item.get_name()} - {item.quantity} pcs\n"
+        buyer_email = self.user.email
+        buyer_message = render_to_string('order_confirmation.html', {'order': self})
 
-        buyer_message += "\nYour order will be processed soon.\n\nFarmApp Team"
-        send_mail(buyer_subject, buyer_message, settings.DEFAULT_FROM_EMAIL, [self.email])
+        email = EmailMessage(
+            subject="Order Confirmation - FarmApp",
+            body=buyer_message,
+            from_email=settings.EMAIL_HOST_USER,
+            to=[buyer_email],
+        )
+        email.content_subtype = "html"
+        email.send()
+
 
     def save(self, *args, **kwargs):
-        """Override save to send emails when a new order is placed."""
-        is_new = self.pk is None  # Check if this is a new order
+        is_new = self.pk is None
         super().save(*args, **kwargs)
         if is_new:
             self.send_order_emails()

@@ -40,8 +40,10 @@
         <div class="header-title">Recently Viewed</div>
         <div class="header-separator"></div>
     </div>
+    {% if recently_viewed %}
+        <div class="products-container">
 {% for item in recently_viewed %}
-    <div class="products-container">
+
     <div class="recently-viewed-card-container" >
         <div class="card-name">{{ item.name }}</div>
         {% if item.type == 'VegetableAndFruit' %}
@@ -78,8 +80,9 @@
             </a>
         {% endif %}
     </div>
-{% endfor %}
+    {% endfor %}
         </div>
+    {% endif%}
 </div>
 
 
