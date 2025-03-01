@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Order Notification</title>
+</head>
+<body>
+    <h2>You have a new order!</h2>
+    <p>The following products need to be shipped:</p>
+    <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+    <p><strong>Order ID:</strong> {{ order.id }}</p>
+</body>
+</html>

@@ -48,9 +48,57 @@ class Order(models.Model):
             self.status = Order.DELIVERED
             self.save()
 
+    def send_order_emails(self):
+        seller_orders = {}
+        for item in self.items.all():
+            seller = None
+            if item.fruit:
+                seller = item.fruit.user
+            elif item.dairy:
+                seller = item.dairy.user
+            elif item.meat:
+                seller = item.meat.user
+            elif item.nut:
+                seller = item.nut.user
+
+            if seller:
+                if seller.email not in seller_orders:
+                    seller_orders[seller.email] = []
+                seller_orders[seller.email].append(f"{item.get_name()} - {item.quantity} pcs")
+
+        # Send email to each seller
+        for seller_email, products in seller_orders.items():
+            subject = "New Order Notification - FarmApp"
+            message = f"Dear Seller,\n\nYou have a new order for the following products:\n\n"
+            message += "\n".join(products)
+            message += "\n\nPlease prepare these products for shipping.\n\nFarmApp Team"
+
+            send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [seller_email])
+
+        # Send confirmation email to buyer
+        buyer_subject = "Order Confirmation - FarmApp"
+        buyer_message = f"Dear {self.first_name},\n\nThank you for your order! Here are your order details:\n\n"
+        for item in self.items.all():
+            buyer_message += f"- {item.get_name()} - {item.quantity} pcs\n"
+
+        buyer_message += "\nYour order will be processed soon.\n\nFarmApp Team"
+        send_mail(buyer_subject, buyer_message, settings.DEFAULT_FROM_EMAIL, [self.email])
+
+    def save(self, *args, **kwargs):
+        """Override save to send emails when a new order is placed."""
+        is_new = self.pk is None  # Check if this is a new order
+        super().save(*args, **kwargs)
+        if is_new:
+            self.send_order_emails()
+
+
+
+
+
 
     class Meta:
         ordering = ('-created_at',)
+
 
 
 class OrderItem(models.Model):
@@ -77,3 +125,4 @@ class OrderItem(models.Model):
             return f'{self.meat.name} {self.meat.type}'
         if self.nut:
             return f'{self.nut.type} {self.nut.name}'
+
