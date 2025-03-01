@@ -14,6 +14,13 @@ body,html {
   background: var(--background-color);
   overflow: visible;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.page-content{
+  flex: 1;
 }
 
 
@@ -40,8 +47,9 @@ body,html {
 .navbar-container {
   width: 100%;
   margin: 0 auto;
+  left: 0;
   height: 112px;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 1000;
   display: flex;
@@ -381,7 +389,7 @@ footer{
   padding-left: 40px;
   padding-right: 40px;
   flex-direction: row;
-  border-bottom: 1px solid dimgrey;
+  border-bottom: 1px solid grey;
 }
 .footer-column{
   flex: 1;
@@ -390,7 +398,7 @@ footer{
 
 }
 .last{
-  border-left: 1px solid dimgrey;
+  border-left: 1px solid grey;
   display: flex;
   padding-left: 30px;
   align-items: center;
