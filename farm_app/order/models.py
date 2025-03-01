@@ -34,7 +34,6 @@ class Order(models.Model):
     address = models.CharField(max_length=100)
     city = models.CharField(max_length=100)
     phone = models.CharField(max_length=10, validators=[validate_ten_digits], help_text="Enter a valid 10-digit phone number.")
-    items = models.ManyToManyField(OrderItem, related_name='orders')
     created_at = models.DateTimeField(auto_now_add=True)
 
     paid = models.BooleanField(default=False)
@@ -63,7 +62,7 @@ class Order(models.Model):
             seller_email = seller.email
             seller_items = self.items.filter(seller=seller)
 
-            html_message = render_to_string('order_notification.html', {
+            html_message = render_to_string('emails/seller_notification.html', {
                 'order': self,
                 'seller': seller,
                 'items': seller_items,
@@ -79,7 +78,7 @@ class Order(models.Model):
             email.send()
 
         buyer_email = self.user.email
-        buyer_message = render_to_string('order_confirmation.html', {'order': self})
+        buyer_message = render_to_string('emails/order_confirmation.html', {'order': self})
 
         email = EmailMessage(
             subject="Order Confirmation - FarmApp",
