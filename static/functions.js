@@ -144,16 +144,10 @@ function toggleForms() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const menuIcon = document.querySelector(".menu-icon");
+function toggleNavbar() {
     const navbarLinks = document.querySelector(".navbar-links");
-
-    if (menuIcon) {
-        menuIcon.addEventListener("click", function () {
-            navbarLinks.classList.toggle("active");
-        });
-    }
-});
+    navbarLinks.classList.toggle("active");
+}
 
 
 

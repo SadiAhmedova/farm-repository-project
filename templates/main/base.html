@@ -19,7 +19,6 @@
     <input type="text" name="q" placeholder="Search products..." />
     <button type="submit" class="button">Search</button>
   </form>
- <p class="menu-icon" >☰</p>
 
   <nav class="navbar-links">
     
@@ -48,6 +47,8 @@
       <a href="{% url 'login' %}" class="nav-item">Sign In</a>
     {% endif %}
   </nav>
+ <p class="menu-icon" onclick="toggleNavbar()">☰</p>
+
 </div>
     <div class="page-content">
     {% block page_content %}

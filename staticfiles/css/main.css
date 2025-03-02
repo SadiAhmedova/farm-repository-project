@@ -26,18 +26,9 @@ html, body {
     clear: both;
 }
 
-.navbar-list {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    right: 0;
-    left: 0;
-    list-style-type: none;
-    margin: 0;
-    padding: 10px 0;
-    background-color: #FBE19D;
-    z-index: 20;
-    height: 60px;
+.navbar-links{
+    display: flex;
+    gap: 15px;
 }
 
 
@@ -185,7 +176,7 @@ html, body {
 }
 
 .menu-icon {
-    display: none !important;
+    display: none;
 }
 
 
@@ -231,8 +222,21 @@ html, body {
         background-color: #c58f07;
     }
 
-    .navbar-list {
-        z-index: 100;
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        background-color: #FBE19D;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 100%;
+        z-index: 999;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .navbar-links.active {
+        display: flex;
     }
 
     .body{
