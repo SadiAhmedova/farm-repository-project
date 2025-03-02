@@ -150,5 +150,18 @@ function toggleNavbar() {
 }
 
 
+const csrftoken = document.querySelector('[name=csrf-token]').content;
+
+fetch('/order/start_order/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrftoken
+    },
+    body: JSON.stringify(data)
+}).then(response => response.json())
+.then(data => console.log(data))  // Handle response from server
+.catch(error => console.error('Error:', error));;
+
 
 
