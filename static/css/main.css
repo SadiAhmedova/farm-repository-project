@@ -177,6 +177,33 @@ body,html {
   align-content: space-between;
 }
 
+@media (max-width: 768px) {
+  .search-bar {
+        display: none;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        background: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .menu-icon {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
 
 
 /*CARDS*/
@@ -330,6 +357,7 @@ body,html {
   width: 100%;
   margin:30px 0;
   flex-flow: wrap;
+  flex-direction: column;
 }
 
 .about-text{
