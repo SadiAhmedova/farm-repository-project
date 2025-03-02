@@ -176,7 +176,7 @@ html, body {
 }
 
 .menu-icon {
-    display: none;
+    display: none !important;
 }
 
 
@@ -211,8 +211,10 @@ html, body {
         display: none;
     }
 
-    .navitem.show-navitem {
+    .navitem {
         display: block;
+        font-size: 20px;
+        padding: 15px 0;
         width: 100%;
         text-align: center;
         background-color: #FBE19D;
@@ -229,7 +231,7 @@ html, body {
         position: absolute;
         top: 50px;
         right: 0;
-        width: 100%;
+        width: 100% !important;
         z-index: 999;
         text-align: center;
         padding: 10px 0;
