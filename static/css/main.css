@@ -323,13 +323,17 @@ body,html {
   font-style: italic;
 }
 .about-btn-container{
-  width: 350px;
   height:40px;
   position: relative;
   background: #426B1F;
   border-radius: 8px;
   overflow: hidden;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin:20px 0;
+  flex-flow: wrap;
 }
 .about-btn-container > а{
   color: var(--background-color);
