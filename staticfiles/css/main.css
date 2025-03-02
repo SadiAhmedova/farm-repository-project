@@ -205,20 +205,9 @@ html, body {
         right: 20px;
         bottom: 0;
         float: right;
+        cursor: pointer;
     }
-
-    .navitem:not(:first-child) {
-        display: none;
-    }
-
-    .navitem {
-        display: block;
-        font-size: 20px;
-        padding: 15px 0;
-        width: 100%;
-        text-align: center;
-        background-color: #FBE19D;
-    }
+    
 
     .show-navitem:nth-child(1) {
         background-color: #c58f07;
@@ -231,10 +220,13 @@ html, body {
         position: absolute;
         top: 50px;
         right: 0;
-        width: 100% !important;
+        width: 50vw;
+        height: 100vh;
         z-index: 999;
-        text-align: center;
-        padding: 10px 0;
+        text-align: left;
+        padding: 20px;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease-in-out;
     }
 
     .navbar-links.active {
@@ -243,6 +235,17 @@ html, body {
 
     .body{
         padding-bottom: 50px;
+    }
+    .navitem {
+        font-size: 22px;
+        padding: 15px;
+        width: 100%;
+        text-align: left;
+        background-color: transparent;
+    }
+
+    .navitem:not(:first-child) {
+        display: block;
     }
 
 }
