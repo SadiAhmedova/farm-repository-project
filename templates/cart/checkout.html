@@ -5,7 +5,10 @@
         <form method="post" action="{% url 'start order' %}">
             {% csrf_token %}
             <div>
-                <h1>Checkout</h1>
+                    <div class="header-container">
+                         <div class="header-title">Checkout</div>
+                        <div class="header-separator"></div>
+                    </div>
 
 
                 <div class="checkout-content">
