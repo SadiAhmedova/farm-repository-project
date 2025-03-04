@@ -27,7 +27,7 @@
                         <td>{{ order.created_at }}</td>
                         <td>{{ order.status }}</td>
                         <td>{{ order.items.all.count }}</td>
-                        <td>${{ order_total_prices|default:0|get_item:order.id|floatformat:2}}</td>
+                        <td>${{ order_total_prices|floatformat:2}}</td>
                     </tr>
                 {% endfor %}
 
